@@ -108,5 +108,5 @@ Evidence:
 - Public screenshots available in proof packs.
 - Public repository linked: `https://github.com/aaravjj2/macrofair`.
 - Public app/API URLs verified and captured in:
-	- `artifacts/proof/20260401T153445Z-milestone-9-demo-submission/public_urls.json`
-	- `artifacts/proof/20260401T153445Z-milestone-9-demo-submission/checks/`
+	- `artifacts/proof/20260401T153759Z-milestone-9-demo-submission/public_urls.json`
+	- `artifacts/proof/20260401T153759Z-milestone-9-demo-submission/checks/`

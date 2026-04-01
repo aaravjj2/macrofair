@@ -1,0 +1,6 @@
+{
+  "frontend_url": "https://gentle-moose-invite.loca.lt",
+  "api_url": "https://afraid-garlics-draw.loca.lt",
+  "checked_at_utc": "20260401T153759Z",
+  "notes": "LocalTunnel public endpoints mapped to production-mode Next.js and FastAPI services"
+}

@@ -1,0 +1,23 @@
+{
+  "milestone": "milestone-9-demo-submission",
+  "timestamp": "20260401T153759Z",
+  "status": "ACCEPTED",
+  "public": {
+    "frontend": "https://gentle-moose-invite.loca.lt",
+    "api": "https://afraid-garlics-draw.loca.lt"
+  },
+  "checks": [
+    "checks/frontend-home.html",
+    "checks/frontend-methodology.html",
+    "checks/api-health.json",
+    "checks/api-metadata.json",
+    "checks/api-markets.json"
+  ],
+  "qualityGates": {
+    "lint": "passed",
+    "tsc": "passed",
+    "vitest": "passed",
+    "pytest": "passed",
+    "playwright": "passed"
+  }
+}

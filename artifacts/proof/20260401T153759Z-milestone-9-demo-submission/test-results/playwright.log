@@ -1,0 +1,10 @@
+
+Running 1 test using 1 worker
+
+[1A[2K[1/1] tests/e2e/smoke.spec.ts:3:5 › screener to detail and methodology
+[1A[2K  1 passed (10.2s)
+
+To open last HTML report run:
+[36m[39m
+[36m  npx playwright show-report[39m
+[36m[39m
