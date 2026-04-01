@@ -1,0 +1,20 @@
+{
+  "name": "macrofair",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/web"
+  ],
+  "scripts": {
+    "lint": "npm run lint:web && python -m ruff check src apps tests scripts",
+    "lint:web": "npm run lint -w apps/web",
+    "tsc": "npm run typecheck -w apps/web",
+    "vitest": "npm run test:unit -w apps/web",
+    "pytest": "pytest",
+    "playwright": "playwright test",
+    "test": "npm run tsc && npm run vitest && npm run pytest && npm run playwright"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.2"
+  }
+}

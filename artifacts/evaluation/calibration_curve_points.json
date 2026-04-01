@@ -1,0 +1,16 @@
+{
+  "points": [
+    {
+      "bucket": 2,
+      "predicted": 0.3471,
+      "observed": 0.0,
+      "count": 2
+    },
+    {
+      "bucket": 3,
+      "predicted": 0.4841,
+      "observed": 0.3333,
+      "count": 3
+    }
+  ]
+}

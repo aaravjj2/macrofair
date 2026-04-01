@@ -1,0 +1,9 @@
+{
+  "run_id": "demo-deterministic-latest",
+  "model_version": "combined-v1",
+  "metrics": {
+    "brier_score": 0.1909,
+    "log_loss": 0.5716,
+    "ece": 0.2293
+  }
+}

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="360" viewBox="0 0 520 360">
+  <rect x="0" y="0" width="520" height="360" fill="#0b1d2d"/>
+  <line x1="50" y1="310" x2="470" y2="310" stroke="#7da0ba"/>
+  <line x1="50" y1="310" x2="50" y2="50" stroke="#7da0ba"/>
+  <line x1="50" y1="310" x2="470" y2="50" stroke="#48657b" stroke-dasharray="5 5"/>
+  <polyline fill="none" stroke="#f4a259" stroke-width="3" points="195.8,310.0 253.3,170.0"/>
+  <text x="50" y="26" fill="#eef6fb" font-size="16">MacroFair Calibration Curve</text>
+  <text x="340" y="348" fill="#b6c9d7" font-size="12">Predicted probability</text>
+  <text x="8" y="42" fill="#b6c9d7" font-size="12">Observed frequency</text>
+</svg>

@@ -1,0 +1,41 @@
+{
+  "as_of": "2026-03-31T23:55:00Z",
+  "mode": "demo",
+  "markets": [
+    {
+      "rank": 1,
+      "market_id": "poly-cpi-jun-2026-over-3",
+      "platform": "Polymarket",
+      "gap": 0.1441,
+      "confidence": 0.8357
+    },
+    {
+      "rank": 2,
+      "market_id": "poly-unemp-dec-2026-over-4_5",
+      "platform": "Polymarket",
+      "gap": 0.0458,
+      "confidence": 0.8283
+    },
+    {
+      "rank": 3,
+      "market_id": "kalshi-recession-q4-2026",
+      "platform": "Kalshi",
+      "gap": -0.01,
+      "confidence": 0.798
+    },
+    {
+      "rank": 4,
+      "market_id": "kalshi-fed-sep-2026-cut",
+      "platform": "Kalshi",
+      "gap": -0.0056,
+      "confidence": 0.8828
+    },
+    {
+      "rank": 5,
+      "market_id": "poly-gdp-q3-2026-below-1_5",
+      "platform": "Polymarket",
+      "gap": -0.0009,
+      "confidence": 0.8433
+    }
+  ]
+}

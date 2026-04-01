@@ -1,0 +1,13 @@
+{
+  "run_id": "demo-2026-03-31",
+  "horizon": "2024-01 to 2026-03 synthetic replay",
+  "sample_size": 142,
+  "by_category": {
+    "inflation": { "brier": 0.168, "count": 31 },
+    "fed": { "brier": 0.172, "count": 28 },
+    "unemployment": { "brier": 0.191, "count": 27 },
+    "recession": { "brier": 0.209, "count": 22 },
+    "gdp": { "brier": 0.181, "count": 34 }
+  },
+  "key_finding": "Lower-liquidity contracts showed wider calibration error than high-liquidity contracts."
+}

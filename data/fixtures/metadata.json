@@ -1,0 +1,19 @@
+{
+  "mode": "demo",
+  "version": "0.1.0",
+  "last_refresh": "2026-03-31T23:55:00Z",
+  "model_version": "baseline-v1",
+  "schema_version": "1.0.0",
+  "supported_categories": [
+    "inflation",
+    "fed",
+    "unemployment",
+    "recession",
+    "gdp"
+  ],
+  "sources": {
+    "polymarket": "fixture-2026-03-31",
+    "kalshi": "fixture-2026-03-31",
+    "fred": "fixture-2026-03-31"
+  }
+}

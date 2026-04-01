@@ -1,0 +1,27 @@
+{
+  "CPIAUCSL": [
+    { "timestamp": "2025-12-01", "value": 315.21, "vintage_date": "2026-03-31", "source": "FRED" },
+    { "timestamp": "2026-01-01", "value": 316.12, "vintage_date": "2026-03-31", "source": "FRED" },
+    { "timestamp": "2026-02-01", "value": 317.08, "vintage_date": "2026-03-31", "source": "FRED" }
+  ],
+  "FEDFUNDS": [
+    { "timestamp": "2025-12-01", "value": 5.33, "vintage_date": "2026-03-31", "source": "FRED" },
+    { "timestamp": "2026-01-01", "value": 5.33, "vintage_date": "2026-03-31", "source": "FRED" },
+    { "timestamp": "2026-02-01", "value": 5.33, "vintage_date": "2026-03-31", "source": "FRED" }
+  ],
+  "UNRATE": [
+    { "timestamp": "2025-12-01", "value": 4.2, "vintage_date": "2026-03-31", "source": "FRED" },
+    { "timestamp": "2026-01-01", "value": 4.3, "vintage_date": "2026-03-31", "source": "FRED" },
+    { "timestamp": "2026-02-01", "value": 4.3, "vintage_date": "2026-03-31", "source": "FRED" }
+  ],
+  "USREC": [
+    { "timestamp": "2025-12-01", "value": 0, "vintage_date": "2026-03-31", "source": "FRED" },
+    { "timestamp": "2026-01-01", "value": 0, "vintage_date": "2026-03-31", "source": "FRED" },
+    { "timestamp": "2026-02-01", "value": 0, "vintage_date": "2026-03-31", "source": "FRED" }
+  ],
+  "A191RL1Q225SBEA": [
+    { "timestamp": "2025-10-01", "value": 2.1, "vintage_date": "2026-03-31", "source": "FRED" },
+    { "timestamp": "2026-01-01", "value": 1.8, "vintage_date": "2026-03-31", "source": "FRED" },
+    { "timestamp": "2026-04-01", "value": 1.6, "vintage_date": "2026-03-31", "source": "FRED" }
+  ]
+}

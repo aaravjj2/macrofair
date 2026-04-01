@@ -1,0 +1,14 @@
+{
+  "examples": [
+    {
+      "market_id": "poly-cpi-jun-2026-over-3",
+      "narrative_summary": "Crowd odds remain above the baseline fair value after accounting for cooling inflation momentum.",
+      "top_factors": ["macro_signal_divergence", "horizon_pressure", "liquidity_adjustment"]
+    },
+    {
+      "market_id": "kalshi-fed-sep-2026-cut",
+      "narrative_summary": "Model fair value is above crowd odds as easing signals accumulate in rates and macro inputs.",
+      "top_factors": ["macro_signal_divergence", "market_momentum", "liquidity_adjustment"]
+    }
+  ]
+}

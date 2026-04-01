@@ -1,0 +1,729 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "MacroFair API",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/api/v1/health": {
+      "get": {
+        "summary": "Health",
+        "operationId": "health_api_v1_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/metadata": {
+      "get": {
+        "summary": "Metadata",
+        "operationId": "metadata_api_v1_metadata_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetadataResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/markets": {
+      "get": {
+        "summary": "List Markets",
+        "operationId": "list_markets_api_v1_markets_get",
+        "parameters": [
+          {
+            "name": "platform",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Platform"
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Category"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 25,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^(gap|confidence|time)$",
+              "default": "gap",
+              "title": "Sort By"
+            }
+          },
+          {
+            "name": "min_confidence",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "default": 0.0,
+              "title": "Min Confidence"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MarketListItem"
+                  },
+                  "title": "Response List Markets Api V1 Markets Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/markets/{market_id}": {
+      "get": {
+        "summary": "Get Market",
+        "operationId": "get_market_api_v1_markets__market_id__get",
+        "parameters": [
+          {
+            "name": "market_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Market Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarketDetail"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/markets/{market_id}/history": {
+      "get": {
+        "summary": "Get Market History",
+        "operationId": "get_market_history_api_v1_markets__market_id__history_get",
+        "parameters": [
+          {
+            "name": "market_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Market Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HistoryPoint"
+                  },
+                  "title": "Response Get Market History Api V1 Markets  Market Id  History Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/markets/{market_id}/explain": {
+      "get": {
+        "summary": "Get Market Explain",
+        "operationId": "get_market_explain_api_v1_markets__market_id__explain_get",
+        "parameters": [
+          {
+            "name": "market_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Market Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExplanationPayload"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/snapshots/latest": {
+      "get": {
+        "summary": "Latest Snapshot",
+        "operationId": "latest_snapshot_api_v1_snapshots_latest_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Latest Snapshot Api V1 Snapshots Latest Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/compare": {
+      "get": {
+        "summary": "Compare Markets",
+        "operationId": "compare_markets_api_v1_compare_get",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Category"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Compare Markets Api V1 Compare Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ExplanationPayload": {
+        "properties": {
+          "top_factors": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Top Factors"
+          },
+          "factor_contributions": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "type": "object",
+            "title": "Factor Contributions"
+          },
+          "model_notes": {
+            "type": "string",
+            "title": "Model Notes"
+          },
+          "confidence_notes": {
+            "type": "string",
+            "title": "Confidence Notes"
+          },
+          "warning_flags": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Warning Flags"
+          },
+          "narrative_summary": {
+            "type": "string",
+            "title": "Narrative Summary"
+          }
+        },
+        "type": "object",
+        "required": [
+          "top_factors",
+          "factor_contributions",
+          "model_notes",
+          "confidence_notes",
+          "narrative_summary"
+        ],
+        "title": "ExplanationPayload"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "HealthResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "mode": {
+            "type": "string",
+            "title": "Mode"
+          },
+          "version": {
+            "type": "string",
+            "title": "Version"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "mode",
+          "version"
+        ],
+        "title": "HealthResponse"
+      },
+      "HistoryPoint": {
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "title": "Timestamp"
+          },
+          "probability": {
+            "type": "number",
+            "title": "Probability"
+          },
+          "volume": {
+            "type": "number",
+            "title": "Volume"
+          },
+          "spread": {
+            "type": "number",
+            "title": "Spread"
+          }
+        },
+        "type": "object",
+        "required": [
+          "timestamp",
+          "probability",
+          "volume",
+          "spread"
+        ],
+        "title": "HistoryPoint"
+      },
+      "MarketDetail": {
+        "properties": {
+          "market_id": {
+            "type": "string",
+            "title": "Market Id"
+          },
+          "platform": {
+            "type": "string",
+            "title": "Platform"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "category": {
+            "type": "string",
+            "title": "Category"
+          },
+          "sub_category": {
+            "type": "string",
+            "title": "Sub Category"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "resolution_time": {
+            "type": "string",
+            "title": "Resolution Time"
+          },
+          "market_probability": {
+            "type": "number",
+            "title": "Market Probability"
+          },
+          "fair_probability": {
+            "type": "number",
+            "title": "Fair Probability"
+          },
+          "gap": {
+            "type": "number",
+            "title": "Gap"
+          },
+          "confidence": {
+            "type": "number",
+            "title": "Confidence"
+          },
+          "liquidity_score": {
+            "type": "number",
+            "title": "Liquidity Score"
+          },
+          "mapping_confidence": {
+            "type": "number",
+            "title": "Mapping Confidence"
+          },
+          "target_variable": {
+            "type": "string",
+            "title": "Target Variable"
+          },
+          "macro_series_id": {
+            "type": "string",
+            "title": "Macro Series Id"
+          },
+          "explanation": {
+            "$ref": "#/components/schemas/ExplanationPayload"
+          },
+          "history": {
+            "items": {
+              "$ref": "#/components/schemas/HistoryPoint"
+            },
+            "type": "array",
+            "title": "History"
+          },
+          "linked_macro_series": {
+            "items": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Linked Macro Series"
+          }
+        },
+        "type": "object",
+        "required": [
+          "market_id",
+          "platform",
+          "title",
+          "description",
+          "category",
+          "sub_category",
+          "status",
+          "resolution_time",
+          "market_probability",
+          "fair_probability",
+          "gap",
+          "confidence",
+          "liquidity_score",
+          "mapping_confidence",
+          "target_variable",
+          "macro_series_id",
+          "explanation",
+          "history",
+          "linked_macro_series"
+        ],
+        "title": "MarketDetail"
+      },
+      "MarketListItem": {
+        "properties": {
+          "market_id": {
+            "type": "string",
+            "title": "Market Id"
+          },
+          "platform": {
+            "type": "string",
+            "title": "Platform"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "category": {
+            "type": "string",
+            "title": "Category"
+          },
+          "market_probability": {
+            "type": "number",
+            "title": "Market Probability"
+          },
+          "fair_probability": {
+            "type": "number",
+            "title": "Fair Probability"
+          },
+          "gap": {
+            "type": "number",
+            "title": "Gap"
+          },
+          "confidence": {
+            "type": "number",
+            "title": "Confidence"
+          },
+          "liquidity_score": {
+            "type": "number",
+            "title": "Liquidity Score"
+          },
+          "resolution_time": {
+            "type": "string",
+            "title": "Resolution Time"
+          },
+          "updated_at": {
+            "type": "string",
+            "title": "Updated At"
+          },
+          "actionability_score": {
+            "type": "number",
+            "title": "Actionability Score"
+          },
+          "rank": {
+            "type": "integer",
+            "title": "Rank"
+          }
+        },
+        "type": "object",
+        "required": [
+          "market_id",
+          "platform",
+          "title",
+          "category",
+          "market_probability",
+          "fair_probability",
+          "gap",
+          "confidence",
+          "liquidity_score",
+          "resolution_time",
+          "updated_at",
+          "actionability_score",
+          "rank"
+        ],
+        "title": "MarketListItem"
+      },
+      "MetadataResponse": {
+        "properties": {
+          "mode": {
+            "type": "string",
+            "title": "Mode"
+          },
+          "version": {
+            "type": "string",
+            "title": "Version"
+          },
+          "last_refresh": {
+            "type": "string",
+            "title": "Last Refresh"
+          },
+          "model_version": {
+            "type": "string",
+            "title": "Model Version"
+          },
+          "schema_version": {
+            "type": "string",
+            "title": "Schema Version"
+          },
+          "supported_categories": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Supported Categories"
+          },
+          "sources": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Sources"
+          }
+        },
+        "type": "object",
+        "required": [
+          "mode",
+          "version",
+          "last_refresh",
+          "model_version",
+          "schema_version",
+          "supported_categories",
+          "sources"
+        ],
+        "title": "MetadataResponse"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

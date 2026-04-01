@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --canvas-start: #07121e;
+  --canvas-end: #0d2335;
+  --panel: #0f2638;
+  --panel-alt: #123047;
+  --ink: #eef6fb;
+  --ink-muted: #b6c9d7;
+  --accent: #f4a259;
+  --success: #6ed39e;
+  --danger: #ff6f61;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "IBM Plex Sans", "Space Grotesk", "Manrope", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 10% 15%, rgba(244, 162, 89, 0.16), transparent 34%),
+    radial-gradient(circle at 88% 8%, rgba(110, 211, 158, 0.2), transparent 38%),
+    linear-gradient(150deg, var(--canvas-start), var(--canvas-end));
+  min-height: 100vh;
+}
+
+.panel {
+  background: linear-gradient(165deg, rgba(18, 48, 71, 0.98), rgba(10, 29, 44, 0.95));
+  border: 1px solid rgba(130, 167, 191, 0.22);
+  box-shadow: 0 24px 60px -25px rgba(0, 0, 0, 0.6);
+}
+
+.muted {
+  color: var(--ink-muted);
+}

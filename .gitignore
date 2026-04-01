@@ -1,0 +1,28 @@
+# Node and frontend
+node_modules/
+apps/web/.next/
+apps/web/coverage/
+apps/web/tsconfig.tsbuildinfo
+
+# Test runtime outputs
+playwright-report/
+test-results/
+
+# Python
+.venv/
+venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.pyo
+*.pyd
+
+# OS/editor
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/settings.json
+
+# Temporary artifacts
+artifacts/tmp/
+

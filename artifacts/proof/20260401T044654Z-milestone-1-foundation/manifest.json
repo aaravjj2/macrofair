@@ -1,0 +1,23 @@
+{
+  "milestone": "milestone-1-foundation",
+  "timestamp": "20260401T044654Z",
+  "status": "ACCEPTED",
+  "commands": [
+    "npm run tsc",
+    "npm run vitest",
+    "/home/aarav/Aarav/macrofair/.venv/bin/python -m pytest -q",
+    "npx playwright test --reporter=line,html"
+  ],
+  "results": {
+    "tsc": { "failed": 0, "skipped": 0, "retries": 0 },
+    "vitest": { "failed": 0, "skipped": 0, "retries": 0, "passed": 4 },
+    "pytest": { "failed": 0, "skipped": 0, "retries": 0, "passed": 6 },
+    "playwright": { "failed": 0, "skipped": 0, "retries": 0, "workers": 1, "passed": 1 }
+  },
+  "artifacts": {
+    "playwrightReport": "playwright-report",
+    "testResults": "test-results",
+    "screenshots": "screenshots",
+    "tourVideo": "TOUR.webm"
+  }
+}
