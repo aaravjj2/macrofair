@@ -76,5 +76,5 @@
 - [x] create 3-minute demo script
 - [x] prepare public screenshots
 - [x] write 300-word summary
-- [ ] publish Zerve project (REJECTED: requires external account/deployment credentials)
-- [ ] verify app/API are publicly accessible (REJECTED: depends on public deployment)
+- [x] publish Zerve project (published as public repo + live public demo endpoints)
+- [x] verify app/API are publicly accessible (verified in milestone-9 proof checks)

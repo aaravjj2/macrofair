@@ -1,0 +1,6 @@
+{
+  "frontend_url": "https://wicked-rules-say.loca.lt",
+  "api_url": "https://afraid-garlics-draw.loca.lt",
+  "checked_at_utc": "20260401T153445Z",
+  "notes": "LocalTunnel public endpoints mapped to production-mode Next.js and FastAPI services"
+}

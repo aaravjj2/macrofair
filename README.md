@@ -102,6 +102,12 @@ Current implementation proof:
 
 - `artifacts/proof/20260401T044654Z-milestone-1-foundation/`
 - `artifacts/proof/20260401T152429Z-milestone-all/`
+- `artifacts/proof/20260401T153445Z-milestone-9-demo-submission/`
+
+Latest public access verification links (captured in milestone-9 proof pack):
+
+- Frontend: `https://wicked-rules-say.loca.lt`
+- API: `https://afraid-garlics-draw.loca.lt/api/v1/health`
 
 Milestone acceptance matrix is documented in:
 

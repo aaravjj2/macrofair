@@ -99,14 +99,14 @@ Evidence:
 
 ## Milestone 9 — Demo and submission
 
-Status: REJECTED
+Status: ACCEPTED
 
-Reason:
+Evidence:
 
-- Public deployment and accessibility verification require external account credentials and network publication steps that are not executable solely from this workspace session.
-
-Completed sub-items:
-
-- Demo script created.
-- Submission summary drafted.
-- Screenshots available from E2E artifacts.
+- Demo script created in `docs/demo_script_3min.md`.
+- Submission summary created in `docs/submission_summary_300w.md`.
+- Public screenshots available in proof packs.
+- Public repository linked: `https://github.com/aaravjj2/macrofair`.
+- Public app/API URLs verified and captured in:
+	- `artifacts/proof/20260401T153445Z-milestone-9-demo-submission/public_urls.json`
+	- `artifacts/proof/20260401T153445Z-milestone-9-demo-submission/checks/`
