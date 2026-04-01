@@ -5,8 +5,8 @@ apps/web/coverage/
 apps/web/tsconfig.tsbuildinfo
 
 # Test runtime outputs
-playwright-report/
-test-results/
+/playwright-report/
+/test-results/
 
 # Python
 .venv/
