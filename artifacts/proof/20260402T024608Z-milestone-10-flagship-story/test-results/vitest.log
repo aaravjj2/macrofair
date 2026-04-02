@@ -1,0 +1,21 @@
+
+> macrofair@0.1.0 vitest
+> npm run test:unit -w apps/web
+
+
+> @macrofair/web@0.1.0 test:unit
+> vitest run
+
+
+ RUN  v3.2.4 /home/aarav/Aarav/macrofair/apps/web
+
+ ✓ lib/__tests__/flagship-finding.test.ts (1 test) 2ms
+ ✓ lib/__tests__/market-utils.test.ts (3 tests) 3ms
+ ✓ components/__tests__/market-screener.test.tsx (1 test) 429ms
+   ✓ MarketScreener > renders completed state and allows filtering  428ms
+
+ Test Files  3 passed (3)
+      Tests  5 passed (5)
+   Start at  22:44:54
+   Duration  1.86s (transform 128ms, setup 303ms, collect 319ms, tests 433ms, environment 1.54s, prepare 1.27s)
+

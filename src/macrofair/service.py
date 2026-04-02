@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from macrofair.explain.generator import build_explanation
+from macrofair.evaluation.flagship_finding import compute_flagship_finding
 from macrofair.features.pipeline import build_feature_row
 from macrofair.ingestion.fred import FREDAdapter
 from macrofair.ingestion.kalshi import KalshiAdapter
@@ -127,3 +128,8 @@ class MacroFairService:
         if not market:
             return None
         return market["explanation"]
+
+    def get_flagship_finding(self) -> dict:
+        metadata = get_metadata()
+        markets = self.list_markets(limit=100, sort_by="gap")
+        return compute_flagship_finding(markets=markets, as_of=metadata["last_refresh"])

@@ -68,3 +68,13 @@ def test_market_not_found() -> None:
 
     assert response.status_code == 404
     assert response.json()["detail"]["error"]["code"] == "NOT_FOUND"
+
+
+def test_flagship_finding_endpoint() -> None:
+    response = client.get("/api/v1/findings/flagship")
+    payload = response.json()
+
+    assert response.status_code == 200
+    assert payload["top_market_id"] == "poly-cpi-jun-2026-over-3"
+    assert payload["top_share_of_total_gap"] > 0.5
+    assert len(payload["contributions"]) >= 5

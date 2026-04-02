@@ -1,0 +1,109 @@
+{
+  "headline_finding": "US CPI YoY (Jun 2026) above 3.0% contributes 69.82% of total absolute gap mass, 3.146x larger than the second-ranked dislocation.",
+  "question": "How concentrated are crowd-vs-fair dislocations in the current demo snapshot?",
+  "method": "Compute absolute gap for each scored market, divide by total absolute gap mass, and summarize concentration using top-share and Herfindahl index.",
+  "result": "Top dislocation share: 69.82% | Top gap: 14.41 pts | Concentration index (HHI): 0.5398",
+  "interpretation": "Dislocations are highly concentrated rather than evenly distributed, so judges can understand the product quickly by focusing on the top ranked contract.",
+  "limitations": [
+    "Demo universe is intentionally small and fixture-based.",
+    "Finding is snapshot-specific and should be monitored over time.",
+    "Concentration does not imply tradability or guaranteed edge."
+  ],
+  "as_of": "2026-03-31T23:55:00Z",
+  "top_market_id": "poly-cpi-jun-2026-over-3",
+  "top_market_title": "US CPI YoY (Jun 2026) above 3.0%",
+  "top_absolute_gap": 0.1441,
+  "total_absolute_gap": 0.2064,
+  "top_share_of_total_gap": 0.6982,
+  "top_to_second_ratio": 3.146,
+  "herfindahl_index": 0.5398,
+  "contributions": [
+    {
+      "rank": 1,
+      "market_id": "poly-cpi-jun-2026-over-3",
+      "title": "US CPI YoY (Jun 2026) above 3.0%",
+      "category": "inflation",
+      "platform": "Polymarket",
+      "gap": 0.1441,
+      "absolute_gap": 0.1441,
+      "share_of_total_gap": 0.6982,
+      "cumulative_share": 0.6982,
+      "confidence": 0.8357
+    },
+    {
+      "rank": 2,
+      "market_id": "poly-unemp-dec-2026-over-4_5",
+      "title": "US unemployment above 4.5% by Dec 2026",
+      "category": "unemployment",
+      "platform": "Polymarket",
+      "gap": 0.0458,
+      "absolute_gap": 0.0458,
+      "share_of_total_gap": 0.2219,
+      "cumulative_share": 0.9201,
+      "confidence": 0.8283
+    },
+    {
+      "rank": 3,
+      "market_id": "kalshi-recession-q4-2026",
+      "title": "US recession declared by Q4 2026",
+      "category": "recession",
+      "platform": "Kalshi",
+      "gap": -0.01,
+      "absolute_gap": 0.01,
+      "share_of_total_gap": 0.0484,
+      "cumulative_share": 0.9685,
+      "confidence": 0.798
+    },
+    {
+      "rank": 4,
+      "market_id": "kalshi-fed-sep-2026-cut",
+      "title": "Fed cuts target rate by Sep 2026",
+      "category": "fed",
+      "platform": "Kalshi",
+      "gap": -0.0056,
+      "absolute_gap": 0.0056,
+      "share_of_total_gap": 0.0271,
+      "cumulative_share": 0.9956,
+      "confidence": 0.8828
+    },
+    {
+      "rank": 5,
+      "market_id": "poly-gdp-q3-2026-below-1_5",
+      "title": "US real GDP growth (Q3 2026) below 1.5%",
+      "category": "gdp",
+      "platform": "Polymarket",
+      "gap": -0.0009,
+      "absolute_gap": 0.0009,
+      "share_of_total_gap": 0.0044,
+      "cumulative_share": 1.0,
+      "confidence": 0.8433
+    }
+  ],
+  "category_breakdown": [
+    {
+      "category": "inflation",
+      "absolute_gap": 0.1441,
+      "share_of_total_gap": 0.6982
+    },
+    {
+      "category": "unemployment",
+      "absolute_gap": 0.0458,
+      "share_of_total_gap": 0.2219
+    },
+    {
+      "category": "recession",
+      "absolute_gap": 0.01,
+      "share_of_total_gap": 0.0484
+    },
+    {
+      "category": "fed",
+      "absolute_gap": 0.0056,
+      "share_of_total_gap": 0.0271
+    },
+    {
+      "category": "gdp",
+      "absolute_gap": 0.0009,
+      "share_of_total_gap": 0.0044
+    }
+  ]
+}

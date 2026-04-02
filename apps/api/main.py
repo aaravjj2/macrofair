@@ -4,7 +4,15 @@ from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 
 from macrofair.repository import get_metadata
-from macrofair.schemas import ExplanationPayload, HealthResponse, HistoryPoint, MarketDetail, MarketListItem, MetadataResponse
+from macrofair.schemas import (
+    ExplanationPayload,
+    FlagshipFindingPayload,
+    HealthResponse,
+    HistoryPoint,
+    MarketDetail,
+    MarketListItem,
+    MetadataResponse,
+)
 from macrofair.service import MacroFairService
 from macrofair.settings import app_mode, app_version
 
@@ -108,3 +116,9 @@ def compare_markets(category: str | None = Query(default=None)) -> dict:
             )
 
     return {"comparisons": comparisons, "count": len(comparisons)}
+
+
+@app.get("/api/v1/findings/flagship", response_model=FlagshipFindingPayload)
+def flagship_finding() -> FlagshipFindingPayload:
+    finding = service.get_flagship_finding()
+    return FlagshipFindingPayload(**finding)

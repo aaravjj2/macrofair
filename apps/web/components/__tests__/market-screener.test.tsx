@@ -20,6 +20,8 @@ describe("MarketScreener", () => {
     render(<MarketScreener markets={DEMO_MARKETS} />);
 
     await waitFor(() => expect(screen.getByTestId("state-completed")).toBeInTheDocument());
+    expect(screen.getByTestId("hero-section")).toBeInTheDocument();
+    expect(screen.getByTestId("flagship-finding-card")).toBeInTheDocument();
     expect(screen.getByTestId("market-table")).toBeInTheDocument();
 
     await user.selectOptions(screen.getByTestId("platform-filter"), "Kalshi");

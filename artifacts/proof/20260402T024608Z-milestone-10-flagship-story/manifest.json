@@ -1,0 +1,25 @@
+{
+  "milestone": "milestone-10-flagship-story",
+  "timestamp": "20260402T024608Z",
+  "status": "ACCEPTED",
+  "objective": "Flagship finding + story-first submission polish with deterministic evidence",
+  "commands": [
+    "npm run tsc",
+    "npm run vitest",
+    "/home/aarav/Aarav/macrofair/.venv/bin/python -m pytest -q",
+    "npm run playwright",
+    "npx playwright test --reporter=line,html"
+  ],
+  "results": {
+    "tsc": { "failed": 0, "skipped": 0, "retries": 0 },
+    "vitest": { "failed": 0, "skipped": 0, "retries": 0, "passed": 5 },
+    "pytest": { "failed": 0, "skipped": 0, "retries": 0, "passed": 23 },
+    "playwright": { "failed": 0, "skipped": 0, "retries": 0, "workers": 1, "passed": 1 }
+  },
+  "artifacts": {
+    "playwrightReport": "playwright-report",
+    "testResults": "test-results",
+    "screenshots": "screenshots",
+    "tourVideo": "TOUR.webm"
+  }
+}
