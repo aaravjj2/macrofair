@@ -1,22 +1,35 @@
 # MacroFair
 
-MacroFair is a prediction-market mispricing screener for macro contracts. It compares market-implied probabilities (Polymarket and Kalshi) against a deterministic fundamentals-aware fair-value baseline, ranks dislocations, and exposes an explanation payload for each contract.
+MacroFair is a macro prediction-market mispricing detector. It compares market-implied probability with a deterministic fundamentals-aware fair value, ranks the largest dislocations, and explains why they occur.
 
-## Repo structure
+## Flagship insight
+
+In the deterministic demo snapshot, one inflation contract (`poly-cpi-jun-2026-over-3`) contributes 69.82% of total absolute dislocation mass and is 3.146x larger than the second-ranked dislocation.
+
+Evidence:
+
+- `docs/findings.md`
+- `artifacts/evaluation/flagship_finding.json`
+- `artifacts/evaluation/flagship_dislocation_contributions.csv`
+- `artifacts/evaluation/flagship_dislocation_concentration.svg`
+
+## Why this matters
+
+Prediction markets are useful but noisy. MacroFair helps judges and researchers rapidly see where crowd odds and a deterministic fair value disagree most, and then inspect factor-level explanations.
+
+## Repository layout
 
 ```text
 macrofair/
 ├── apps/
 │   ├── api/                 # FastAPI endpoints
 │   └── web/                 # Next.js frontend
-├── src/macrofair/           # Pipeline: ingestion, features, model, scoring, explain
-├── tests/
-│   ├── unit/api/            # pytest API tests
-│   └── e2e/                 # Playwright smoke test
-├── data/fixtures/           # Deterministic demo snapshots
+├── src/macrofair/           # ingestion, normalization, features, modeling, scoring, evaluation
+├── tests/                   # pytest + playwright
+├── data/fixtures/           # deterministic demo fixtures
 ├── artifacts/
-│   ├── evaluation/          # Calibration/backtest/example outputs
-│   └── proof/               # Milestone proof packs
+│   ├── evaluation/          # computed findings and metrics
+│   └── proof/               # milestone proof packs
 ├── docs/
 └── scripts/
 ```
@@ -33,27 +46,34 @@ npm install
 /home/aarav/Aarav/macrofair/.venv/bin/python -m pip install -e .[dev]
 ```
 
-If you are using this workspace’s configured interpreter, Python commands should use:
-
-```bash
-/home/aarav/Aarav/macrofair/.venv/bin/python
-```
-
-## Run
+## Run locally
 
 Backend:
 
 ```bash
-/home/aarav/Aarav/macrofair/.venv/bin/python -m uvicorn apps.api.main:app --reload
+PYTHONPATH=src /home/aarav/Aarav/macrofair/.venv/bin/python -m uvicorn apps.api.main:app --reload
 ```
 
-Frontend:
+Frontend dev:
 
 ```bash
 npm run dev -w apps/web
 ```
 
-## API endpoints
+Frontend production mode (used by Playwright):
+
+```bash
+npm run build -w apps/web
+npm run start -w apps/web
+```
+
+## Deterministic demo mode
+
+- Default mode is `demo`.
+- Test/demo paths are fixture-driven from `data/fixtures/`.
+- No secrets are required for tests or demo execution.
+
+## API surface
 
 - `GET /api/v1/health`
 - `GET /api/v1/metadata`
@@ -61,13 +81,11 @@ npm run dev -w apps/web
 - `GET /api/v1/markets/{market_id}`
 - `GET /api/v1/markets/{market_id}/history`
 - `GET /api/v1/markets/{market_id}/explain`
-
-Also implemented from the extended API spec:
-
+- `GET /api/v1/findings/flagship`
 - `GET /api/v1/snapshots/latest`
 - `GET /api/v1/compare`
 
-## Test gates
+## Verification commands
 
 ```bash
 npm run tsc
@@ -76,7 +94,7 @@ npm run vitest
 npm run playwright
 ```
 
-Playwright is configured with:
+Playwright policy:
 
 - retries = 0
 - workers = 1
@@ -84,37 +102,15 @@ Playwright is configured with:
 - trace = on
 - screenshot = on
 
-## Deterministic demo mode
+## Proof packs
 
-- Default mode is `demo`.
-- Data is loaded from `data/fixtures/`.
-- No secrets are required for end-to-end behavior.
-
-## Milestone proof packs
-
-Proof packs are written to:
+Every milestone must produce:
 
 ```text
 artifacts/proof/<timestamp>-<milestone>/
 ```
 
-Current implementation proof:
-
-- `artifacts/proof/20260401T044654Z-milestone-1-foundation/`
-- `artifacts/proof/20260401T152429Z-milestone-all/`
-- `artifacts/proof/20260401T153445Z-milestone-9-demo-submission/`
-- `artifacts/proof/20260401T153759Z-milestone-9-demo-submission/`
-
-Latest public access verification links (captured in milestone-9 proof pack):
-
-- Frontend: `https://gentle-moose-invite.loca.lt`
-- API: `https://afraid-garlics-draw.loca.lt/api/v1/health`
-
-Milestone acceptance matrix is documented in:
-
-- `docs/milestones.md`
-
-Contains:
+Each pack includes at minimum:
 
 - `MANIFEST.md`
 - `manifest.json`
@@ -123,3 +119,9 @@ Contains:
 - `test-results/`
 - `screenshots/`
 - `TOUR.webm`
+
+See milestone status in `docs/milestones.md`.
+
+Latest flagship-story proof pack:
+
+- `artifacts/proof/20260402T024608Z-milestone-10-flagship-story/`

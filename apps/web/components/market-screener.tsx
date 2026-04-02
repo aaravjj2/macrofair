@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { DEMO_METADATA } from "@/lib/demo-data";
+import { computeFlagshipFinding } from "@/lib/flagship-finding";
 import { filterAndSortMarkets, MarketSort } from "@/lib/market-utils";
 import { MarketSummary } from "@/lib/types";
 
@@ -30,6 +31,7 @@ export function MarketScreener({ markets }: Props) {
   const [isLoading, setIsLoading] = useState(true);
   const [isWorking, setIsWorking] = useState(false);
   const [loadError] = useState<string | null>(null);
+  const hasLoadedRef = useRef(false);
 
   useEffect(() => {
     const timerId = window.setTimeout(() => setIsLoading(false), 220);
@@ -41,10 +43,15 @@ export function MarketScreener({ markets }: Props) {
       return;
     }
 
+    if (!hasLoadedRef.current) {
+      hasLoadedRef.current = true;
+      return;
+    }
+
     setIsWorking(true);
     const timerId = window.setTimeout(() => setIsWorking(false), 120);
     return () => window.clearTimeout(timerId);
-  }, [search, platform, category, sortBy]);
+  }, [search, platform, category, sortBy, isLoading]);
 
   const filteredMarkets = useMemo(
     () =>
@@ -68,9 +75,45 @@ export function MarketScreener({ markets }: Props) {
           : "completed";
 
   const spotlight = filteredMarkets[0];
+  const flagshipFinding = useMemo(() => computeFlagshipFinding(markets), [markets]);
 
   return (
     <section className="space-y-6">
+      <div className="panel rounded-2xl p-6" data-testid="hero-section">
+        <div className="grid gap-5 lg:grid-cols-[2fr_1fr]">
+          <div>
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-300">Flagship use case</p>
+            <h2 className="mt-2 text-3xl font-bold leading-tight md:text-4xl">
+              Find the macro contracts where crowd odds and fundamentals disagree.
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm muted">
+              MacroFair ranks live dislocations, highlights the most decision-relevant gap first,
+              and explains why the model diverges from market price in deterministic demo mode.
+            </p>
+          </div>
+
+          <div className="rounded-xl border border-slate-500/35 bg-slate-900/25 p-4" data-testid="hero-featured-dislocation">
+            <p className="text-xs uppercase tracking-[0.2em] muted">Featured dislocation</p>
+            <h3 className="mt-2 text-lg font-semibold leading-tight">{flagshipFinding.topMarketTitle}</h3>
+            <p className="mt-2 text-sm muted">Gap size: {(flagshipFinding.topAbsoluteGap * 100).toFixed(1)} pts</p>
+            <p className="text-sm muted">Share of total dislocation: {(flagshipFinding.topShareOfTotalGap * 100).toFixed(1)}%</p>
+            <Link
+              href={`/markets/${flagshipFinding.topMarketId}`}
+              className="mt-3 inline-block rounded-md border border-slate-300/40 px-3 py-2 text-sm hover:border-slate-100"
+              data-testid="hero-featured-link"
+            >
+              Open featured market
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <div className="panel rounded-2xl p-5" data-testid="flagship-finding-card">
+        <p className="text-xs uppercase tracking-[0.2em] muted">Flagship finding</p>
+        <h3 className="mt-2 text-xl font-semibold" data-testid="flagship-finding-headline">{flagshipFinding.headlineFinding}</h3>
+        <p className="mt-2 text-sm muted">{flagshipFinding.result}</p>
+      </div>
+
       <div className="panel rounded-2xl p-5" data-testid="summary-strip">
         <p className="text-xs uppercase tracking-[0.2em] muted">Deterministic demo mode</p>
         <div className="mt-2 grid gap-3 text-sm md:grid-cols-3">

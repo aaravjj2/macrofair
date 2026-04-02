@@ -74,6 +74,25 @@ Fields:
 - `model_notes`
 - `confidence_notes`
 
+### GET `/findings/flagship`
+Return the deterministic headline finding payload used for homepage storytelling and demo narration.
+
+Fields include:
+
+- `headline_finding`
+- `question`
+- `method`
+- `result`
+- `interpretation`
+- `limitations`
+- `top_market_id`
+- `top_market_title`
+- `top_absolute_gap`
+- `top_share_of_total_gap`
+- `top_to_second_ratio`
+- `herfindahl_index`
+- `contributions`
+
 ### GET `/snapshots/latest`
 Return current ranked snapshot and metadata.
 

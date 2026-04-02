@@ -71,3 +71,41 @@ class MarketDetail(BaseModel):
     explanation: ExplanationPayload
     history: list[HistoryPoint]
     linked_macro_series: list[dict[str, float | str]]
+
+
+class FlagshipContribution(BaseModel):
+    rank: int
+    market_id: str
+    title: str
+    category: str
+    platform: str
+    gap: float
+    absolute_gap: float
+    share_of_total_gap: float
+    cumulative_share: float
+    confidence: float
+
+
+class FlagshipCategoryBreakdown(BaseModel):
+    category: str
+    absolute_gap: float
+    share_of_total_gap: float
+
+
+class FlagshipFindingPayload(BaseModel):
+    headline_finding: str
+    question: str
+    method: str
+    result: str
+    interpretation: str
+    limitations: list[str]
+    as_of: str
+    top_market_id: str
+    top_market_title: str
+    top_absolute_gap: float
+    total_absolute_gap: float
+    top_share_of_total_gap: float
+    top_to_second_ratio: float
+    herfindahl_index: float
+    contributions: list[FlagshipContribution]
+    category_breakdown: list[FlagshipCategoryBreakdown]

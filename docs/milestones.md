@@ -110,3 +110,17 @@ Evidence:
 - Public app/API URLs verified and captured in:
 	- `artifacts/proof/20260401T153759Z-milestone-9-demo-submission/public_urls.json`
 	- `artifacts/proof/20260401T153759Z-milestone-9-demo-submission/checks/`
+
+## Milestone 10 — Flagship insight and story polish
+
+Status: ACCEPTED
+
+Evidence:
+
+- Current-state audit documented in `docs/current_state_audit.md`.
+- Flagship analytical finding documented in `docs/findings.md`.
+- Deterministic finding artifacts exported to `artifacts/evaluation/flagship_*`.
+- Story-first UI updates shipped on homepage, detail page, and methodology page.
+- Typed flagship finding endpoint added: `GET /api/v1/findings/flagship`.
+- Fresh proof pack generated at:
+  - `artifacts/proof/20260402T024608Z-milestone-10-flagship-story/`

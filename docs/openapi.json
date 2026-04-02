@@ -330,6 +330,24 @@
           }
         }
       }
+    },
+    "/api/v1/findings/flagship": {
+      "get": {
+        "summary": "Flagship Finding",
+        "operationId": "flagship_finding_api_v1_findings_flagship_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FlagshipFindingPayload"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -379,6 +397,184 @@
           "narrative_summary"
         ],
         "title": "ExplanationPayload"
+      },
+      "FlagshipCategoryBreakdown": {
+        "properties": {
+          "category": {
+            "type": "string",
+            "title": "Category"
+          },
+          "absolute_gap": {
+            "type": "number",
+            "title": "Absolute Gap"
+          },
+          "share_of_total_gap": {
+            "type": "number",
+            "title": "Share Of Total Gap"
+          }
+        },
+        "type": "object",
+        "required": [
+          "category",
+          "absolute_gap",
+          "share_of_total_gap"
+        ],
+        "title": "FlagshipCategoryBreakdown"
+      },
+      "FlagshipContribution": {
+        "properties": {
+          "rank": {
+            "type": "integer",
+            "title": "Rank"
+          },
+          "market_id": {
+            "type": "string",
+            "title": "Market Id"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "category": {
+            "type": "string",
+            "title": "Category"
+          },
+          "platform": {
+            "type": "string",
+            "title": "Platform"
+          },
+          "gap": {
+            "type": "number",
+            "title": "Gap"
+          },
+          "absolute_gap": {
+            "type": "number",
+            "title": "Absolute Gap"
+          },
+          "share_of_total_gap": {
+            "type": "number",
+            "title": "Share Of Total Gap"
+          },
+          "cumulative_share": {
+            "type": "number",
+            "title": "Cumulative Share"
+          },
+          "confidence": {
+            "type": "number",
+            "title": "Confidence"
+          }
+        },
+        "type": "object",
+        "required": [
+          "rank",
+          "market_id",
+          "title",
+          "category",
+          "platform",
+          "gap",
+          "absolute_gap",
+          "share_of_total_gap",
+          "cumulative_share",
+          "confidence"
+        ],
+        "title": "FlagshipContribution"
+      },
+      "FlagshipFindingPayload": {
+        "properties": {
+          "headline_finding": {
+            "type": "string",
+            "title": "Headline Finding"
+          },
+          "question": {
+            "type": "string",
+            "title": "Question"
+          },
+          "method": {
+            "type": "string",
+            "title": "Method"
+          },
+          "result": {
+            "type": "string",
+            "title": "Result"
+          },
+          "interpretation": {
+            "type": "string",
+            "title": "Interpretation"
+          },
+          "limitations": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Limitations"
+          },
+          "as_of": {
+            "type": "string",
+            "title": "As Of"
+          },
+          "top_market_id": {
+            "type": "string",
+            "title": "Top Market Id"
+          },
+          "top_market_title": {
+            "type": "string",
+            "title": "Top Market Title"
+          },
+          "top_absolute_gap": {
+            "type": "number",
+            "title": "Top Absolute Gap"
+          },
+          "total_absolute_gap": {
+            "type": "number",
+            "title": "Total Absolute Gap"
+          },
+          "top_share_of_total_gap": {
+            "type": "number",
+            "title": "Top Share Of Total Gap"
+          },
+          "top_to_second_ratio": {
+            "type": "number",
+            "title": "Top To Second Ratio"
+          },
+          "herfindahl_index": {
+            "type": "number",
+            "title": "Herfindahl Index"
+          },
+          "contributions": {
+            "items": {
+              "$ref": "#/components/schemas/FlagshipContribution"
+            },
+            "type": "array",
+            "title": "Contributions"
+          },
+          "category_breakdown": {
+            "items": {
+              "$ref": "#/components/schemas/FlagshipCategoryBreakdown"
+            },
+            "type": "array",
+            "title": "Category Breakdown"
+          }
+        },
+        "type": "object",
+        "required": [
+          "headline_finding",
+          "question",
+          "method",
+          "result",
+          "interpretation",
+          "limitations",
+          "as_of",
+          "top_market_id",
+          "top_market_title",
+          "top_absolute_gap",
+          "total_absolute_gap",
+          "top_share_of_total_gap",
+          "top_to_second_ratio",
+          "herfindahl_index",
+          "contributions",
+          "category_breakdown"
+        ],
+        "title": "FlagshipFindingPayload"
       },
       "HTTPValidationError": {
         "properties": {

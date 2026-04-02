@@ -51,3 +51,16 @@ export interface MarketDetail extends MarketSummary {
   linked_macro_series: MacroSeriesPoint[];
   explanation: ExplainPayload;
 }
+
+export interface FlagshipFinding {
+  headlineFinding: string;
+  question: string;
+  method: string;
+  result: string;
+  topMarketId: string;
+  topMarketTitle: string;
+  topAbsoluteGap: number;
+  topShareOfTotalGap: number;
+  topToSecondRatio: number;
+  herfindahlIndex: number;
+}

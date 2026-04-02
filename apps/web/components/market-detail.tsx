@@ -33,17 +33,45 @@ export function MarketDetail({ detail, peerMarkets }: Props) {
       <div className="panel rounded-2xl p-5" data-testid="market-detail-header">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] muted">{detail.platform} · {detail.category}</p>
+            <p className="text-xs uppercase tracking-[0.2em] muted">{detail.platform} · {detail.category} · {detail.sub_category}</p>
             <h2 className="text-2xl font-semibold">{detail.title}</h2>
             <p className="mt-2 max-w-3xl text-sm muted">{detail.description}</p>
           </div>
-          <Link
-            href="/"
-            className="rounded-md border border-slate-400/40 px-3 py-2 text-sm hover:border-slate-200"
-            data-testid="detail-back-link"
-          >
-            Back to screener
-          </Link>
+          <div className="flex items-center gap-2">
+            <Link
+              href="/methodology"
+              className="rounded-md border border-slate-400/40 px-3 py-2 text-sm hover:border-slate-200"
+              data-testid="detail-methodology-link"
+            >
+              Methodology
+            </Link>
+            <Link
+              href="/"
+              className="rounded-md border border-slate-400/40 px-3 py-2 text-sm hover:border-slate-200"
+              data-testid="detail-back-link"
+            >
+              Back to screener
+            </Link>
+          </div>
+        </div>
+
+        <div className="mt-4 grid gap-2 text-sm md:grid-cols-4" data-testid="market-context-grid">
+          <div className="rounded-md border border-slate-500/30 px-3 py-2">
+            <p className="text-xs muted">Status</p>
+            <p className="font-medium">{detail.status}</p>
+          </div>
+          <div className="rounded-md border border-slate-500/30 px-3 py-2">
+            <p className="text-xs muted">Resolution</p>
+            <p className="font-medium">{new Date(detail.resolution_time).toUTCString()}</p>
+          </div>
+          <div className="rounded-md border border-slate-500/30 px-3 py-2">
+            <p className="text-xs muted">Mapping confidence</p>
+            <p className="font-medium">{pct(detail.mapping_confidence)}</p>
+          </div>
+          <div className="rounded-md border border-slate-500/30 px-3 py-2">
+            <p className="text-xs muted">Target variable</p>
+            <p className="font-medium">{detail.target_variable}</p>
+          </div>
         </div>
       </div>
 
@@ -139,6 +167,14 @@ export function MarketDetail({ detail, peerMarkets }: Props) {
             {peerMarkets.length === 0 && <p className="muted">No similar setups found in this demo snapshot.</p>}
           </div>
         </div>
+      </div>
+
+      <div className="panel rounded-2xl p-5" data-testid="detail-interpretation-panel">
+        <p className="text-sm muted">How to interpret this dislocation</p>
+        <p className="mt-2 text-sm">
+          Positive gap means market odds are above fair value; negative gap means market odds are below fair value.
+          Confidence reflects liquidity, spread quality, mapping stability, and model agreement.
+        </p>
       </div>
     </section>
   );

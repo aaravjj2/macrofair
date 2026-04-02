@@ -1,0 +1,6 @@
+rank,market_id,title,category,platform,gap,absolute_gap,share_of_total_gap,cumulative_share,confidence
+1,poly-cpi-jun-2026-over-3,US CPI YoY (Jun 2026) above 3.0%,inflation,Polymarket,0.1441,0.1441,0.6982,0.6982,0.8357
+2,poly-unemp-dec-2026-over-4_5,US unemployment above 4.5% by Dec 2026,unemployment,Polymarket,0.0458,0.0458,0.2219,0.9201,0.8283
+3,kalshi-recession-q4-2026,US recession declared by Q4 2026,recession,Kalshi,-0.01,0.01,0.0484,0.9685,0.798
+4,kalshi-fed-sep-2026-cut,Fed cuts target rate by Sep 2026,fed,Kalshi,-0.0056,0.0056,0.0271,0.9956,0.8828
+5,poly-gdp-q3-2026-below-1_5,US real GDP growth (Q3 2026) below 1.5%,gdp,Polymarket,-0.0009,0.0009,0.0044,1.0,0.8433
