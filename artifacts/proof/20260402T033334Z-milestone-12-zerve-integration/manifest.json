@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "20260402T033334Z",
+  "milestone": "milestone-12-zerve-integration",
+  "branch": "main",
+  "head_commit": "eeef931",
+  "objective": "Add safe optional server-side Zerve integration while preserving deterministic demo defaults.",
+  "commands": [
+    "npm run tsc",
+    "npm run vitest",
+    "python -m pytest -q",
+    "npm run playwright",
+    "python scripts/export_openapi.py",
+    "python scripts/export_zerve_submission_package.py",
+    "./scripts/create_proof_pack.sh milestone-12-zerve-integration"
+  ],
+  "results": {
+    "tsc": {
+      "passed": true,
+      "errors": 0
+    },
+    "vitest": {
+      "passed": true,
+      "tests_passed": 9,
+      "tests_failed": 0,
+      "tests_skipped": 0
+    },
+    "pytest": {
+      "passed": true,
+      "tests_passed": 39,
+      "tests_failed": 0,
+      "tests_skipped": 0
+    },
+    "playwright": {
+      "passed": true,
+      "tests_passed": 1,
+      "tests_failed": 0,
+      "tests_skipped": 0,
+      "retries": 0,
+      "workers": 1
+    }
+  },
+  "security": {
+    "secrets_committed": false,
+    "api_key_exposed": false,
+    "frontend_secret_exposure": false,
+    "demo_mode_default": true
+  }
+}

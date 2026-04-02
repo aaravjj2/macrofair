@@ -121,6 +121,43 @@ Fields include:
 - `one_sentence`
 - `snapshots[]`
 
+### GET `/integrations/zerve/status`
+Return server-side integration status without exposing secrets.
+
+Fields include:
+
+- `enabled`
+- `configured`
+- `api_key_configured` (boolean only)
+- `missing_required`
+- `mode`
+- `remote_check_attempted`
+- `remote_connected`
+
+### GET `/integrations/zerve/package`
+Return deterministic submission package payload plus current integration status.
+
+Package includes:
+
+- flagship finding
+- persistence finding
+- secondary finding
+- ranked snapshot summary
+- deterministic `payload_hash`
+
+### POST `/integrations/zerve/sync`
+Optional sync endpoint for sending submission package to Zerve-compatible API.
+
+Request body:
+
+- `dry_run` (boolean, default `true`)
+
+Behavior:
+
+- Disabled/unconfigured mode: returns safe non-sync fallback.
+- Dry run mode: validates package and returns no-network result.
+- Live sync only when explicitly requested and configured.
+
 ### GET `/snapshots/latest`
 Return current ranked snapshot and metadata.
 

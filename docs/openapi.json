@@ -384,6 +384,101 @@
           }
         }
       }
+    },
+    "/api/v1/integrations/zerve/status": {
+      "get": {
+        "summary": "Zerve Status",
+        "operationId": "zerve_status_api_v1_integrations_zerve_status_get",
+        "parameters": [
+          {
+            "name": "verify_remote",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Verify Remote"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ZerveStatusPayload"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/integrations/zerve/package": {
+      "get": {
+        "summary": "Zerve Package",
+        "operationId": "zerve_package_api_v1_integrations_zerve_package_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ZervePackagePayload"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/integrations/zerve/sync": {
+      "post": {
+        "summary": "Zerve Sync",
+        "operationId": "zerve_sync_api_v1_integrations_zerve_sync_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ZerveSyncRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ZerveSyncPayload"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1214,6 +1309,197 @@
           "type"
         ],
         "title": "ValidationError"
+      },
+      "ZervePackagePayload": {
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/ZerveStatusPayload"
+          },
+          "package": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Package"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "package"
+        ],
+        "title": "ZervePackagePayload"
+      },
+      "ZerveStatusPayload": {
+        "properties": {
+          "integration": {
+            "type": "string",
+            "title": "Integration"
+          },
+          "enabled": {
+            "type": "boolean",
+            "title": "Enabled"
+          },
+          "configured": {
+            "type": "boolean",
+            "title": "Configured"
+          },
+          "mode": {
+            "type": "string",
+            "title": "Mode"
+          },
+          "base_url": {
+            "type": "string",
+            "title": "Base Url"
+          },
+          "project_id": {
+            "type": "string",
+            "title": "Project Id"
+          },
+          "api_key_configured": {
+            "type": "boolean",
+            "title": "Api Key Configured"
+          },
+          "missing_required": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Missing Required"
+          },
+          "remote_check_attempted": {
+            "type": "boolean",
+            "title": "Remote Check Attempted"
+          },
+          "remote_connected": {
+            "type": "boolean",
+            "title": "Remote Connected"
+          },
+          "remote_status_code": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Remote Status Code"
+          },
+          "last_error": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Error"
+          },
+          "note": {
+            "type": "string",
+            "title": "Note"
+          }
+        },
+        "type": "object",
+        "required": [
+          "integration",
+          "enabled",
+          "configured",
+          "mode",
+          "base_url",
+          "project_id",
+          "api_key_configured",
+          "missing_required",
+          "remote_check_attempted",
+          "remote_connected",
+          "remote_status_code",
+          "last_error",
+          "note"
+        ],
+        "title": "ZerveStatusPayload"
+      },
+      "ZerveSyncPayload": {
+        "properties": {
+          "attempted": {
+            "type": "boolean",
+            "title": "Attempted"
+          },
+          "dry_run": {
+            "type": "boolean",
+            "title": "Dry Run"
+          },
+          "synced": {
+            "type": "boolean",
+            "title": "Synced"
+          },
+          "status_code": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status Code"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          },
+          "remote_error": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Remote Error"
+          },
+          "remote_reference": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Remote Reference"
+          },
+          "package_hash": {
+            "type": "string",
+            "title": "Package Hash"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ZerveStatusPayload"
+          }
+        },
+        "type": "object",
+        "required": [
+          "attempted",
+          "dry_run",
+          "synced",
+          "status_code",
+          "message",
+          "remote_error",
+          "package_hash",
+          "status"
+        ],
+        "title": "ZerveSyncPayload"
+      },
+      "ZerveSyncRequest": {
+        "properties": {
+          "dry_run": {
+            "type": "boolean",
+            "title": "Dry Run",
+            "default": true
+          }
+        },
+        "type": "object",
+        "title": "ZerveSyncRequest"
       }
     }
   }

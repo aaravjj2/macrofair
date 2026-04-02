@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import Body, FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 
 from macrofair.repository import get_metadata
@@ -14,6 +14,10 @@ from macrofair.schemas import (
     MarketListItem,
     MetadataResponse,
     SecondaryFindingPayload,
+    ZervePackagePayload,
+    ZerveStatusPayload,
+    ZerveSyncPayload,
+    ZerveSyncRequest,
 )
 from macrofair.service import MacroFairService
 from macrofair.settings import app_mode, app_version
@@ -136,3 +140,21 @@ def flagship_persistence() -> FlagshipPersistencePayload:
 def secondary_finding() -> SecondaryFindingPayload:
     finding = service.get_secondary_finding()
     return SecondaryFindingPayload(**finding)
+
+
+@app.get("/api/v1/integrations/zerve/status", response_model=ZerveStatusPayload)
+def zerve_status(verify_remote: bool = Query(default=False)) -> ZerveStatusPayload:
+    status = service.get_zerve_status(verify_remote=verify_remote)
+    return ZerveStatusPayload(**status)
+
+
+@app.get("/api/v1/integrations/zerve/package", response_model=ZervePackagePayload)
+def zerve_package() -> ZervePackagePayload:
+    payload = service.get_zerve_package_payload()
+    return ZervePackagePayload(**payload)
+
+
+@app.post("/api/v1/integrations/zerve/sync", response_model=ZerveSyncPayload)
+def zerve_sync(request_payload: ZerveSyncRequest = Body(default_factory=ZerveSyncRequest)) -> ZerveSyncPayload:
+    result = service.sync_zerve_submission_package(dry_run=request_payload.dry_run)
+    return ZerveSyncPayload(**result)

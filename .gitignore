@@ -26,3 +26,8 @@ __pycache__/
 # Temporary artifacts
 artifacts/tmp/
 
+# Local secrets
+.env
+.env.*
+!.env.example
+

@@ -1,5 +1,9 @@
 from __future__ import annotations
 
+import hashlib
+import json
+from typing import Any
+
 from macrofair.explain.generator import build_explanation
 from macrofair.evaluation.flagship_finding import compute_flagship_finding
 from macrofair.evaluation.longitudinal_findings import (
@@ -8,20 +12,28 @@ from macrofair.evaluation.longitudinal_findings import (
 )
 from macrofair.features.pipeline import build_feature_row
 from macrofair.ingestion.fred import FREDAdapter
+from macrofair.integrations.zerve import ZerveClient, ZerveSettings, load_zerve_settings
 from macrofair.ingestion.kalshi import KalshiAdapter
 from macrofair.ingestion.polymarket import PolymarketAdapter
 from macrofair.modeling.fair_value import CombinedFairValueModel
 from macrofair.normalization.canonical import normalize_markets
 from macrofair.repository import get_history, get_metadata
 from macrofair.scoring.dislocation import rank_markets, score_market
+from macrofair.settings import app_mode, app_version
 
 
 class MacroFairService:
-    def __init__(self) -> None:
+    def __init__(
+        self,
+        zerve_settings: ZerveSettings | None = None,
+        zerve_client: ZerveClient | None = None,
+    ) -> None:
         self.polymarket = PolymarketAdapter()
         self.kalshi = KalshiAdapter()
         self.fred = FREDAdapter()
         self.model = CombinedFairValueModel()
+        self.zerve_settings = zerve_settings or load_zerve_settings()
+        self.zerve_client = zerve_client or ZerveClient(self.zerve_settings)
 
     def _all_raw_markets(self) -> list[dict]:
         return normalize_markets([*self.polymarket.list_markets(), *self.kalshi.list_markets()])
@@ -143,3 +155,137 @@ class MacroFairService:
 
     def get_secondary_finding(self) -> dict:
         return compute_secondary_finding()
+
+    @staticmethod
+    def _payload_hash(payload: dict[str, Any]) -> str:
+        canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"))
+        return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+
+    def get_zerve_status(self, verify_remote: bool = False) -> dict[str, Any]:
+        settings = self.zerve_settings
+        status: dict[str, Any] = {
+            "integration": "zerve",
+            "enabled": settings.enabled,
+            "configured": settings.configured,
+            "mode": app_mode(),
+            "base_url": settings.base_url if settings.enabled else "",
+            "project_id": settings.project_id if settings.enabled else "",
+            "api_key_configured": settings.api_key_configured,
+            "missing_required": settings.missing_required,
+            "remote_check_attempted": False,
+            "remote_connected": False,
+            "remote_status_code": None,
+            "last_error": None,
+            "note": "Zerve integration disabled. Demo mode remains default.",
+        }
+
+        if settings.enabled and not settings.configured:
+            status["note"] = "Zerve integration enabled but missing required server-side env vars."
+        elif settings.configured:
+            status["note"] = "Zerve integration configured and ready."
+
+        if verify_remote and settings.configured:
+            remote = self.zerve_client.check_project_status()
+            status["remote_check_attempted"] = True
+            status["remote_connected"] = bool(remote.get("ok"))
+            status["remote_status_code"] = remote.get("status_code")
+            status["last_error"] = remote.get("error")
+            if remote.get("ok"):
+                status["note"] = "Zerve configuration verified via remote status check."
+            else:
+                status["note"] = "Zerve configured but remote status check failed."
+
+        return status
+
+    def get_zerve_submission_package(self) -> dict[str, Any]:
+        metadata = get_metadata()
+        ranked = self.list_markets(limit=10, sort_by="gap")
+
+        package: dict[str, Any] = {
+            "package_name": "macrofair-zerve-submission-package",
+            "package_version": "1.0.0",
+            "generated_at": metadata["last_refresh"],
+            "mode": app_mode(),
+            "app_version": app_version(),
+            "model_version": metadata["model_version"],
+            "schema_version": metadata["schema_version"],
+            "metadata": {
+                "supported_categories": metadata["supported_categories"],
+                "sources": metadata["sources"],
+                "snapshot_as_of": metadata["last_refresh"],
+            },
+            "findings": {
+                "flagship": self.get_flagship_finding(),
+                "flagship_persistence": self.get_flagship_persistence(),
+                "secondary": self.get_secondary_finding(),
+            },
+            "ranked_snapshot_summary": {
+                "count": len(ranked),
+                "markets": [
+                    {
+                        "rank": row["rank"],
+                        "market_id": row["market_id"],
+                        "title": row["title"],
+                        "platform": row["platform"],
+                        "category": row["category"],
+                        "market_probability": row["market_probability"],
+                        "fair_probability": row["fair_probability"],
+                        "gap": row["gap"],
+                        "confidence": row["confidence"],
+                    }
+                    for row in ranked
+                ],
+            },
+        }
+        package["payload_hash"] = self._payload_hash(package)
+        return package
+
+    def get_zerve_package_payload(self) -> dict[str, Any]:
+        return {
+            "status": self.get_zerve_status(verify_remote=False),
+            "package": self.get_zerve_submission_package(),
+        }
+
+    def sync_zerve_submission_package(self, dry_run: bool = True) -> dict[str, Any]:
+        status = self.get_zerve_status(verify_remote=False)
+        package = self.get_zerve_submission_package()
+        package_hash = package["payload_hash"]
+
+        if not status["configured"]:
+            return {
+                "attempted": False,
+                "dry_run": dry_run,
+                "synced": False,
+                "status_code": None,
+                "message": "Zerve is disabled or missing required configuration.",
+                "remote_error": None,
+                "package_hash": package_hash,
+                "status": status,
+            }
+
+        if dry_run:
+            return {
+                "attempted": False,
+                "dry_run": True,
+                "synced": False,
+                "status_code": None,
+                "message": "Dry run only. Package was not sent to Zerve.",
+                "remote_error": None,
+                "package_hash": package_hash,
+                "status": status,
+            }
+
+        remote = self.zerve_client.sync_submission_package(package)
+        payload = remote.get("payload")
+        remote_reference = payload.get("id") if isinstance(payload, dict) else None
+        return {
+            "attempted": True,
+            "dry_run": False,
+            "synced": bool(remote.get("ok")),
+            "status_code": remote.get("status_code"),
+            "message": "Zerve sync completed." if remote.get("ok") else "Zerve sync failed.",
+            "remote_error": remote.get("error"),
+            "remote_reference": remote_reference,
+            "package_hash": package_hash,
+            "status": status,
+        }

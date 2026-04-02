@@ -12,6 +12,8 @@ To make that claim durable, MacroFair adds a committed longitudinal snapshot win
 
 MacroFair also adds a second deterministic finding: platform gap asymmetry. Across the same snapshot window, Polymarket mean signed gaps are above Kalshi mean signed gaps in 4/4 snapshots, with average asymmetry of 7.67 points. This complements concentration with a cross-platform structural lens.
 
+For deployment credibility, MacroFair adds an optional Zerve integration layer that is server-side only and feature-flagged. It exposes typed status/package/sync endpoints, and generates a deterministic `zerve_submission_package.json` that bundles flagship, persistence, secondary findings, ranked snapshot summary, and metadata. If Zerve credentials are absent, the system degrades gracefully and remains fully functional in default demo mode.
+
 Detail pages provide market vs fair value, gap/confidence context, trend charts, macro context, and factor-level explanation. Methodology explicitly defines fair value, confidence, deterministic demo mode behavior, interpretation rules, and limitations.
 
 Quality gates are strict: TypeScript checks, frontend unit tests, backend unit tests, and Playwright E2E all run with zero retries and single-worker deterministic settings. Each milestone is accompanied by proof artifacts under `artifacts/proof/<timestamp>-<milestone>/`, including manifest files, reports, screenshots, and demo video capture.

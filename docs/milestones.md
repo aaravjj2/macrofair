@@ -145,3 +145,24 @@ Evidence:
 	- `GET /api/v1/findings/secondary`
 - Fresh proof pack generated at:
 	- `artifacts/proof/20260402T031728Z-milestone-11-longitudinal-findings/`
+
+## Milestone 12 — Optional Zerve integration layer
+
+Status: ACCEPTED
+
+Evidence:
+
+- Optional server-side integration module:
+	- `src/macrofair/integrations/zerve/config.py`
+	- `src/macrofair/integrations/zerve/client.py`
+- Typed integration endpoints:
+	- `GET /api/v1/integrations/zerve/status`
+	- `GET /api/v1/integrations/zerve/package`
+	- `POST /api/v1/integrations/zerve/sync`
+- Deterministic submission package export:
+	- `artifacts/evaluation/zerve_submission_package.json`
+	- `scripts/export_zerve_submission_package.py`
+- Integration documentation:
+	- `docs/zerve_integration.md`
+- Fresh proof pack generated at:
+	- `artifacts/proof/20260402T033334Z-milestone-12-zerve-integration/`

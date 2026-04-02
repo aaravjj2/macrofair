@@ -79,6 +79,12 @@ Mention full quality gates and proof pack:
 - `pytest`
 - `playwright`
 
+Optionally show integration readiness in findings view:
+
+- Zerve integration is optional and disabled by default.
+- Backend status confirms whether server-side configuration is present.
+- Core demo behavior is unchanged without any key.
+
 Close with three linked messages:
 
 1. Current top dislocation.

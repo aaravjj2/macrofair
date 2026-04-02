@@ -100,3 +100,37 @@ def test_secondary_finding_endpoint() -> None:
     assert payload["window_size"] == 4
     assert payload["average_asymmetry_gap"] > 0
     assert len(payload["snapshots"]) == 4
+
+
+def test_zerve_status_endpoint_safe_defaults() -> None:
+    response = client.get("/api/v1/integrations/zerve/status")
+    payload = response.json()
+
+    assert response.status_code == 200
+    assert payload["integration"] == "zerve"
+    assert payload["enabled"] is False
+    assert payload["configured"] is False
+    assert payload["api_key_configured"] is False
+    assert payload["mode"] == "demo"
+
+
+def test_zerve_package_endpoint_returns_deterministic_payload() -> None:
+    response = client.get("/api/v1/integrations/zerve/package")
+    payload = response.json()
+
+    assert response.status_code == 200
+    assert payload["status"]["integration"] == "zerve"
+    assert payload["package"]["package_name"] == "macrofair-zerve-submission-package"
+    assert payload["package"]["findings"]["flagship"]["top_market_id"] == "poly-cpi-jun-2026-over-3"
+    assert "api_key" not in payload
+
+
+def test_zerve_sync_endpoint_fallback_when_disabled() -> None:
+    response = client.post("/api/v1/integrations/zerve/sync", json={"dry_run": True})
+    payload = response.json()
+
+    assert response.status_code == 200
+    assert payload["attempted"] is False
+    assert payload["dry_run"] is True
+    assert payload["synced"] is False
+    assert payload["status"]["configured"] is False

@@ -30,6 +30,9 @@ test("screener to detail and methodology", async ({ page }) => {
   await page.getByTestId("methodology-findings-link").click();
   await expect(page.getByTestId("findings-page")).toBeVisible();
   await expect(page.getByTestId("findings-snapshot-card")).toBeVisible();
+  await expect(page.getByTestId("findings-zerve-status-card")).toBeVisible();
+  await expect(page.getByTestId("findings-zerve-status-enabled")).toBeVisible();
+  await expect(page.getByTestId("findings-zerve-status-configured")).toBeVisible();
   await expect(page.getByTestId("findings-persistence-card")).toBeVisible();
   await expect(page.getByTestId("findings-secondary-card")).toBeVisible();
   await expect(page.getByTestId("persistence-table")).toBeVisible();

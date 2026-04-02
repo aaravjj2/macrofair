@@ -164,3 +164,40 @@ class SecondaryFindingPayload(BaseModel):
     average_asymmetry_gap: float
     positive_window_share: float
     snapshots: list[SecondaryFindingSnapshot]
+
+
+class ZerveStatusPayload(BaseModel):
+    integration: str
+    enabled: bool
+    configured: bool
+    mode: str
+    base_url: str
+    project_id: str
+    api_key_configured: bool
+    missing_required: list[str]
+    remote_check_attempted: bool
+    remote_connected: bool
+    remote_status_code: int | None
+    last_error: str | None
+    note: str
+
+
+class ZervePackagePayload(BaseModel):
+    status: ZerveStatusPayload
+    package: dict[str, object]
+
+
+class ZerveSyncRequest(BaseModel):
+    dry_run: bool = True
+
+
+class ZerveSyncPayload(BaseModel):
+    attempted: bool
+    dry_run: bool
+    synced: bool
+    status_code: int | None
+    message: str
+    remote_error: str | None
+    remote_reference: str | None = None
+    package_hash: str
+    status: ZerveStatusPayload

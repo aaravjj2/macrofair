@@ -1,0 +1,317 @@
+{
+  "package_name": "macrofair-zerve-submission-package",
+  "package_version": "1.0.0",
+  "generated_at": "2026-03-31T23:55:00Z",
+  "mode": "demo",
+  "app_version": "0.1.0",
+  "model_version": "baseline-v1",
+  "schema_version": "1.0.0",
+  "metadata": {
+    "supported_categories": [
+      "inflation",
+      "fed",
+      "unemployment",
+      "recession",
+      "gdp"
+    ],
+    "sources": {
+      "polymarket": "fixture-2026-03-31",
+      "kalshi": "fixture-2026-03-31",
+      "fred": "fixture-2026-03-31"
+    },
+    "snapshot_as_of": "2026-03-31T23:55:00Z"
+  },
+  "findings": {
+    "flagship": {
+      "headline_finding": "US CPI YoY (Jun 2026) above 3.0% contributes 69.82% of total absolute gap mass, 3.146x larger than the second-ranked dislocation.",
+      "question": "How concentrated are crowd-vs-fair dislocations in the current demo snapshot?",
+      "method": "Compute absolute gap for each scored market, divide by total absolute gap mass, and summarize concentration using top-share and Herfindahl index.",
+      "result": "Top dislocation share: 69.82% | Top gap: 14.41 pts | Concentration index (HHI): 0.5398",
+      "interpretation": "Dislocations are highly concentrated rather than evenly distributed, so judges can understand the product quickly by focusing on the top ranked contract.",
+      "limitations": [
+        "Demo universe is intentionally small and fixture-based.",
+        "Finding is snapshot-specific and should be monitored over time.",
+        "Concentration does not imply tradability or guaranteed edge."
+      ],
+      "as_of": "2026-03-31T23:55:00Z",
+      "top_market_id": "poly-cpi-jun-2026-over-3",
+      "top_market_title": "US CPI YoY (Jun 2026) above 3.0%",
+      "top_absolute_gap": 0.1441,
+      "total_absolute_gap": 0.2064,
+      "top_share_of_total_gap": 0.6982,
+      "top_to_second_ratio": 3.146,
+      "herfindahl_index": 0.5398,
+      "contributions": [
+        {
+          "rank": 1,
+          "market_id": "poly-cpi-jun-2026-over-3",
+          "title": "US CPI YoY (Jun 2026) above 3.0%",
+          "category": "inflation",
+          "platform": "Polymarket",
+          "gap": 0.1441,
+          "absolute_gap": 0.1441,
+          "share_of_total_gap": 0.6982,
+          "cumulative_share": 0.6982,
+          "confidence": 0.8357
+        },
+        {
+          "rank": 2,
+          "market_id": "poly-unemp-dec-2026-over-4_5",
+          "title": "US unemployment above 4.5% by Dec 2026",
+          "category": "unemployment",
+          "platform": "Polymarket",
+          "gap": 0.0458,
+          "absolute_gap": 0.0458,
+          "share_of_total_gap": 0.2219,
+          "cumulative_share": 0.9201,
+          "confidence": 0.8283
+        },
+        {
+          "rank": 3,
+          "market_id": "kalshi-recession-q4-2026",
+          "title": "US recession declared by Q4 2026",
+          "category": "recession",
+          "platform": "Kalshi",
+          "gap": -0.01,
+          "absolute_gap": 0.01,
+          "share_of_total_gap": 0.0484,
+          "cumulative_share": 0.9685,
+          "confidence": 0.798
+        },
+        {
+          "rank": 4,
+          "market_id": "kalshi-fed-sep-2026-cut",
+          "title": "Fed cuts target rate by Sep 2026",
+          "category": "fed",
+          "platform": "Kalshi",
+          "gap": -0.0056,
+          "absolute_gap": 0.0056,
+          "share_of_total_gap": 0.0271,
+          "cumulative_share": 0.9956,
+          "confidence": 0.8828
+        },
+        {
+          "rank": 5,
+          "market_id": "poly-gdp-q3-2026-below-1_5",
+          "title": "US real GDP growth (Q3 2026) below 1.5%",
+          "category": "gdp",
+          "platform": "Polymarket",
+          "gap": -0.0009,
+          "absolute_gap": 0.0009,
+          "share_of_total_gap": 0.0044,
+          "cumulative_share": 1.0,
+          "confidence": 0.8433
+        }
+      ],
+      "category_breakdown": [
+        {
+          "category": "inflation",
+          "absolute_gap": 0.1441,
+          "share_of_total_gap": 0.6982
+        },
+        {
+          "category": "unemployment",
+          "absolute_gap": 0.0458,
+          "share_of_total_gap": 0.2219
+        },
+        {
+          "category": "recession",
+          "absolute_gap": 0.01,
+          "share_of_total_gap": 0.0484
+        },
+        {
+          "category": "fed",
+          "absolute_gap": 0.0056,
+          "share_of_total_gap": 0.0271
+        },
+        {
+          "category": "gdp",
+          "absolute_gap": 0.0009,
+          "share_of_total_gap": 0.0044
+        }
+      ]
+    },
+    "flagship_persistence": {
+      "headline_finding": "US CPI YoY (Jun 2026) above 3.0% stays the top dislocation in 4/4 deterministic snapshots.",
+      "question": "Is the flagship dislocation concentration a one-off or persistent across deterministic snapshots?",
+      "method": "Replay the same deterministic scoring pipeline across a committed snapshot window and recompute top-share, top-to-second ratio, and HHI for each timestamp.",
+      "result": "Persistence rate: 100.0% | Average top-share: 62.37% | Top-share range: 55.9% to 69.82%",
+      "interpretation": "The concentration story is stable across the window, so the flagship insight is not driven by a single timestamp artifact.",
+      "limitations": [
+        "Snapshot window is short and synthetic by design for deterministic reproducibility.",
+        "Persistence here is structural consistency, not a prediction of future market behavior.",
+        "Small universe size can amplify concentration metrics relative to broader production universes."
+      ],
+      "window_name": "flagship-persistence-window-v1",
+      "window_size": 4,
+      "dominant_top_market_id": "poly-cpi-jun-2026-over-3",
+      "dominant_top_market_title": "US CPI YoY (Jun 2026) above 3.0%",
+      "persistence_rate": 1.0,
+      "average_top_share": 0.6237,
+      "min_top_share": 0.559,
+      "max_top_share": 0.6982,
+      "snapshots": [
+        {
+          "snapshot_id": "2026-03-28-close",
+          "label": "2026-03-28 close",
+          "as_of": "2026-03-28T23:55:00Z",
+          "feature_snapshot_hash": "9866014967371153834929c5ae0000f4b7f5e19ab26d666cf80b79b44b07782d",
+          "top_market_id": "poly-cpi-jun-2026-over-3",
+          "top_market_title": "US CPI YoY (Jun 2026) above 3.0%",
+          "top_share_of_total_gap": 0.559,
+          "top_to_second_ratio": 1.851,
+          "herfindahl_index": 0.4124
+        },
+        {
+          "snapshot_id": "2026-03-29-close",
+          "label": "2026-03-29 close",
+          "as_of": "2026-03-29T23:55:00Z",
+          "feature_snapshot_hash": "c716c9314eb065fbb554d66701b3c1f8af2ba36709930f34d94848314d02303f",
+          "top_market_id": "poly-cpi-jun-2026-over-3",
+          "top_market_title": "US CPI YoY (Jun 2026) above 3.0%",
+          "top_share_of_total_gap": 0.5957,
+          "top_to_second_ratio": 2.329,
+          "herfindahl_index": 0.4303
+        },
+        {
+          "snapshot_id": "2026-03-30-close",
+          "label": "2026-03-30 close",
+          "as_of": "2026-03-30T23:55:00Z",
+          "feature_snapshot_hash": "c2fb2fcfc6c7163031df6b17696ee218e3018367e9cc309f966fe8e5ac8b5a2e",
+          "top_market_id": "poly-cpi-jun-2026-over-3",
+          "top_market_title": "US CPI YoY (Jun 2026) above 3.0%",
+          "top_share_of_total_gap": 0.6418,
+          "top_to_second_ratio": 2.519,
+          "herfindahl_index": 0.4824
+        },
+        {
+          "snapshot_id": "2026-03-31-close",
+          "label": "2026-03-31 close",
+          "as_of": "2026-03-31T23:55:00Z",
+          "feature_snapshot_hash": "7b2967e7439431e80c6b00664d341310ffe52568d385c9b505f1bc4c0f212854",
+          "top_market_id": "poly-cpi-jun-2026-over-3",
+          "top_market_title": "US CPI YoY (Jun 2026) above 3.0%",
+          "top_share_of_total_gap": 0.6982,
+          "top_to_second_ratio": 3.146,
+          "herfindahl_index": 0.5398
+        }
+      ]
+    },
+    "secondary": {
+      "headline_finding": "Platform gap asymmetry is positive in 4/4 snapshots: Polymarket mean gaps stay above Kalshi.",
+      "question": "Do platforms exhibit asymmetric signed mispricing across the deterministic snapshot window?",
+      "method": "For each snapshot, compute mean signed gap by platform and measure asymmetry as Polymarket mean gap minus Kalshi mean gap.",
+      "result": "Average asymmetry (Polymarket mean gap - Kalshi mean gap): 7.67 pts | Positive-window share: 100.0%",
+      "interpretation": "A consistently positive asymmetry indicates directional pricing differences across platforms, which complements concentration analysis with a cross-platform structural lens.",
+      "one_sentence": "Across the deterministic window, Polymarket contracts are consistently priced further above fair value than Kalshi contracts on average.",
+      "limitations": [
+        "Only two platforms are represented in the demo fixture universe.",
+        "Mean signed gap can hide within-platform category dispersion.",
+        "Asymmetry is descriptive evidence, not a causal claim."
+      ],
+      "window_name": "flagship-persistence-window-v1",
+      "window_size": 4,
+      "average_asymmetry_gap": 0.0767,
+      "positive_window_share": 1.0,
+      "snapshots": [
+        {
+          "snapshot_id": "2026-03-28-close",
+          "label": "2026-03-28 close",
+          "as_of": "2026-03-28T23:55:00Z",
+          "feature_snapshot_hash": "9866014967371153834929c5ae0000f4b7f5e19ab26d666cf80b79b44b07782d",
+          "polymarket_mean_gap": 0.0651,
+          "kalshi_mean_gap": -0.0146,
+          "asymmetry_gap": 0.0797
+        },
+        {
+          "snapshot_id": "2026-03-29-close",
+          "label": "2026-03-29 close",
+          "as_of": "2026-03-29T23:55:00Z",
+          "feature_snapshot_hash": "c716c9314eb065fbb554d66701b3c1f8af2ba36709930f34d94848314d02303f",
+          "polymarket_mean_gap": 0.0645,
+          "kalshi_mean_gap": -0.0151,
+          "asymmetry_gap": 0.0796
+        },
+        {
+          "snapshot_id": "2026-03-30-close",
+          "label": "2026-03-30 close",
+          "as_of": "2026-03-30T23:55:00Z",
+          "feature_snapshot_hash": "c2fb2fcfc6c7163031df6b17696ee218e3018367e9cc309f966fe8e5ac8b5a2e",
+          "polymarket_mean_gap": 0.0661,
+          "kalshi_mean_gap": -0.0106,
+          "asymmetry_gap": 0.0767
+        },
+        {
+          "snapshot_id": "2026-03-31-close",
+          "label": "2026-03-31 close",
+          "as_of": "2026-03-31T23:55:00Z",
+          "feature_snapshot_hash": "7b2967e7439431e80c6b00664d341310ffe52568d385c9b505f1bc4c0f212854",
+          "polymarket_mean_gap": 0.063,
+          "kalshi_mean_gap": -0.0078,
+          "asymmetry_gap": 0.0708
+        }
+      ]
+    }
+  },
+  "ranked_snapshot_summary": {
+    "count": 5,
+    "markets": [
+      {
+        "rank": 1,
+        "market_id": "poly-cpi-jun-2026-over-3",
+        "title": "US CPI YoY (Jun 2026) above 3.0%",
+        "platform": "Polymarket",
+        "category": "inflation",
+        "market_probability": 0.64,
+        "fair_probability": 0.4959,
+        "gap": 0.1441,
+        "confidence": 0.8357
+      },
+      {
+        "rank": 2,
+        "market_id": "poly-unemp-dec-2026-over-4_5",
+        "title": "US unemployment above 4.5% by Dec 2026",
+        "platform": "Polymarket",
+        "category": "unemployment",
+        "market_probability": 0.42,
+        "fair_probability": 0.3742,
+        "gap": 0.0458,
+        "confidence": 0.8283
+      },
+      {
+        "rank": 3,
+        "market_id": "kalshi-recession-q4-2026",
+        "title": "US recession declared by Q4 2026",
+        "platform": "Kalshi",
+        "category": "recession",
+        "market_probability": 0.31,
+        "fair_probability": 0.32,
+        "gap": -0.01,
+        "confidence": 0.798
+      },
+      {
+        "rank": 4,
+        "market_id": "kalshi-fed-sep-2026-cut",
+        "title": "Fed cuts target rate by Sep 2026",
+        "platform": "Kalshi",
+        "category": "fed",
+        "market_probability": 0.49,
+        "fair_probability": 0.4956,
+        "gap": -0.0056,
+        "confidence": 0.8828
+      },
+      {
+        "rank": 5,
+        "market_id": "poly-gdp-q3-2026-below-1_5",
+        "title": "US real GDP growth (Q3 2026) below 1.5%",
+        "platform": "Polymarket",
+        "category": "gdp",
+        "market_probability": 0.46,
+        "fair_probability": 0.4609,
+        "gap": -0.0009,
+        "confidence": 0.8433
+      }
+    ]
+  },
+  "payload_hash": "b4cb6317e09869ea93c733a0c836ab130a8cdff3de397ffb4e6236c4527ee85e"
+}

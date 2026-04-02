@@ -9,6 +9,7 @@ import {
   summarizeFlagshipPersistence,
   summarizeSecondaryFinding,
 } from "@/lib/findings-utils";
+import { resolveZerveStatus } from "@/lib/zerve-status";
 
 function formatPct(value: number): string {
   return `${(value * 100).toFixed(2)}%`;
@@ -19,9 +20,10 @@ function formatPts(value: number): string {
   return `${sign}${(value * 100).toFixed(2)} pts`;
 }
 
-export default function FindingsPage() {
+export default async function FindingsPage() {
   const persistence = summarizeFlagshipPersistence(FLAGSHIP_PERSISTENCE_SNAPSHOTS);
   const secondary = summarizeSecondaryFinding(SECONDARY_FINDING_SNAPSHOTS);
+  const zerveStatus = await resolveZerveStatus();
 
   return (
     <section className="space-y-4" data-testid="findings-page">
@@ -29,6 +31,18 @@ export default function FindingsPage() {
         <p className="text-xs uppercase tracking-[0.2em] muted">Flagship snapshot finding</p>
         <h2 className="mt-2 text-2xl font-semibold">Where to look first, now</h2>
         <p className="mt-3 max-w-4xl text-sm muted">{FLAGSHIP_SNAPSHOT_HEADLINE}</p>
+      </div>
+
+      <div className="panel rounded-2xl p-6" data-testid="findings-zerve-status-card">
+        <p className="text-xs uppercase tracking-[0.2em] muted">Optional integration status</p>
+        <h3 className="mt-2 text-xl font-semibold">Zerve integration (server-side only)</h3>
+        <p className="mt-2 text-sm muted">{zerveStatus.note}</p>
+        <div className="mt-3 grid gap-2 text-sm md:grid-cols-4">
+          <p data-testid="findings-zerve-status-enabled">Enabled: {String(zerveStatus.enabled)}</p>
+          <p data-testid="findings-zerve-status-configured">Configured: {String(zerveStatus.configured)}</p>
+          <p data-testid="findings-zerve-status-mode">Mode: {zerveStatus.mode}</p>
+          <p data-testid="findings-zerve-status-source">Status source: {zerveStatus.source}</p>
+        </div>
       </div>
 
       <div className="panel rounded-2xl p-6" data-testid="findings-persistence-card">

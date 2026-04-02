@@ -77,6 +77,24 @@ npm run start -w apps/web
 - Test/demo paths are fixture-driven from `data/fixtures/`.
 - No secrets are required for tests or demo execution.
 
+## Optional Zerve integration
+
+- Zerve integration is feature-flagged and server-side only.
+- Default remains `ZERVE_ENABLED=false`.
+- If no key is present, MacroFair still runs fully in deterministic demo mode.
+- Frontend never receives raw key material.
+
+Key env vars:
+
+- `ZERVE_ENABLED=false`
+- `ZERVE_API_KEY`
+- `ZERVE_BASE_URL`
+- `ZERVE_PROJECT_ID`
+
+Use `.env.example` as a template and keep real values in local `.env` only.
+
+Integration docs: `docs/zerve_integration.md`
+
 ## API surface
 
 - `GET /api/v1/health`
@@ -90,6 +108,9 @@ npm run start -w apps/web
 - `GET /api/v1/findings/secondary`
 - `GET /api/v1/snapshots/latest`
 - `GET /api/v1/compare`
+- `GET /api/v1/integrations/zerve/status`
+- `GET /api/v1/integrations/zerve/package`
+- `POST /api/v1/integrations/zerve/sync`
 
 ## Verification commands
 
@@ -139,3 +160,7 @@ Latest rerun proof pack:
 Latest milestone-11 proof pack:
 
 - `artifacts/proof/20260402T031728Z-milestone-11-longitudinal-findings/`
+
+Latest milestone-12 proof pack:
+
+- `artifacts/proof/20260402T033334Z-milestone-12-zerve-integration/`
