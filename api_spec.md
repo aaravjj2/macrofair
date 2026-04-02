@@ -93,6 +93,34 @@ Fields include:
 - `herfindahl_index`
 - `contributions`
 
+### GET `/findings/flagship/persistence`
+Return longitudinal concentration evidence computed across committed deterministic snapshots.
+
+Fields include:
+
+- `window_name`
+- `window_size`
+- `dominant_top_market_id`
+- `persistence_rate`
+- `average_top_share`
+- `snapshots[]` with `top_share_of_total_gap`, `top_to_second_ratio`, and `herfindahl_index`
+
+### GET `/findings/secondary`
+Return the complementary deterministic finding payload.
+
+Current secondary finding type:
+
+- platform gap asymmetry (`polymarket_mean_gap - kalshi_mean_gap`)
+
+Fields include:
+
+- `window_name`
+- `window_size`
+- `average_asymmetry_gap`
+- `positive_window_share`
+- `one_sentence`
+- `snapshots[]`
+
 ### GET `/snapshots/latest`
 Return current ranked snapshot and metadata.
 

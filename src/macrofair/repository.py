@@ -34,3 +34,7 @@ def get_history(market_id: str) -> list[dict[str, Any]]:
 
 def get_fred_series() -> dict[str, list[dict[str, Any]]]:
     return _read_json("fred_series.json")
+
+
+def get_snapshot_window() -> dict[str, Any]:
+    return _read_json("snapshot_window.json")

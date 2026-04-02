@@ -2,20 +2,24 @@
 
 MacroFair is a macro prediction-market mispricing detector. It compares market-implied probability with a deterministic fundamentals-aware fair value, ranks the largest dislocations, and explains why they occur.
 
-## Flagship insight
+## Evidence-backed findings layer
 
-In the deterministic demo snapshot, one inflation contract (`poly-cpi-jun-2026-over-3`) contributes 69.82% of total absolute dislocation mass and is 3.146x larger than the second-ranked dislocation.
+MacroFair now ships a three-part deterministic findings package:
+
+1. Flagship snapshot finding: CPI June 2026 contributes 69.82% of dislocation mass (3.146x #2).
+2. Longitudinal persistence: top dislocation persists in 4/4 committed snapshots.
+3. Secondary finding (platform asymmetry): Polymarket mean gaps remain above Kalshi in 4/4 snapshots.
 
 Evidence:
 
 - `docs/findings.md`
 - `artifacts/evaluation/flagship_finding.json`
-- `artifacts/evaluation/flagship_dislocation_contributions.csv`
-- `artifacts/evaluation/flagship_dislocation_concentration.svg`
+- `artifacts/evaluation/flagship_persistence.json`
+- `artifacts/evaluation/secondary_finding.json`
 
 ## Why this matters
 
-Prediction markets are useful but noisy. MacroFair helps judges and researchers rapidly see where crowd odds and a deterministic fair value disagree most, and then inspect factor-level explanations.
+Prediction markets are useful but noisy. MacroFair helps judges and researchers rapidly see where crowd odds and a deterministic fair value disagree most, and then verify whether that signal persists across snapshots and platforms.
 
 ## Repository layout
 
@@ -82,6 +86,8 @@ npm run start -w apps/web
 - `GET /api/v1/markets/{market_id}/history`
 - `GET /api/v1/markets/{market_id}/explain`
 - `GET /api/v1/findings/flagship`
+- `GET /api/v1/findings/flagship/persistence`
+- `GET /api/v1/findings/secondary`
 - `GET /api/v1/snapshots/latest`
 - `GET /api/v1/compare`
 
@@ -125,3 +131,11 @@ See milestone status in `docs/milestones.md`.
 Latest flagship-story proof pack:
 
 - `artifacts/proof/20260402T024608Z-milestone-10-flagship-story/`
+
+Latest rerun proof pack:
+
+- `artifacts/proof/20260402T025336Z-milestone-10-flagship-story-rerun/`
+
+Latest milestone-11 proof pack:
+
+- `artifacts/proof/20260402T031728Z-milestone-11-longitudinal-findings/`

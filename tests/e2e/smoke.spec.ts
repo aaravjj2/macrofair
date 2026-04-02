@@ -25,6 +25,15 @@ test("screener to detail and methodology", async ({ page }) => {
 
   await page.getByTestId("detail-methodology-link").click();
   await expect(page.getByTestId("methodology-interpretation-section")).toBeVisible();
+  await expect(page.getByTestId("methodology-findings-evidence")).toBeVisible();
+
+  await page.getByTestId("methodology-findings-link").click();
+  await expect(page.getByTestId("findings-page")).toBeVisible();
+  await expect(page.getByTestId("findings-snapshot-card")).toBeVisible();
+  await expect(page.getByTestId("findings-persistence-card")).toBeVisible();
+  await expect(page.getByTestId("findings-secondary-card")).toBeVisible();
+  await expect(page.getByTestId("persistence-table")).toBeVisible();
+  await expect(page.getByTestId("secondary-table")).toBeVisible();
 
   await page.getByTestId("nav-home-link").click();
   await expect(page.getByTestId("market-table")).toBeVisible();

@@ -7,11 +7,13 @@ from macrofair.repository import get_metadata
 from macrofair.schemas import (
     ExplanationPayload,
     FlagshipFindingPayload,
+    FlagshipPersistencePayload,
     HealthResponse,
     HistoryPoint,
     MarketDetail,
     MarketListItem,
     MetadataResponse,
+    SecondaryFindingPayload,
 )
 from macrofair.service import MacroFairService
 from macrofair.settings import app_mode, app_version
@@ -122,3 +124,15 @@ def compare_markets(category: str | None = Query(default=None)) -> dict:
 def flagship_finding() -> FlagshipFindingPayload:
     finding = service.get_flagship_finding()
     return FlagshipFindingPayload(**finding)
+
+
+@app.get("/api/v1/findings/flagship/persistence", response_model=FlagshipPersistencePayload)
+def flagship_persistence() -> FlagshipPersistencePayload:
+    persistence = service.get_flagship_persistence()
+    return FlagshipPersistencePayload(**persistence)
+
+
+@app.get("/api/v1/findings/secondary", response_model=SecondaryFindingPayload)
+def secondary_finding() -> SecondaryFindingPayload:
+    finding = service.get_secondary_finding()
+    return SecondaryFindingPayload(**finding)

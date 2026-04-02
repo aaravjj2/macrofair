@@ -1,0 +1,66 @@
+{
+  "headline_finding": "US CPI YoY (Jun 2026) above 3.0% stays the top dislocation in 4/4 deterministic snapshots.",
+  "question": "Is the flagship dislocation concentration a one-off or persistent across deterministic snapshots?",
+  "method": "Replay the same deterministic scoring pipeline across a committed snapshot window and recompute top-share, top-to-second ratio, and HHI for each timestamp.",
+  "result": "Persistence rate: 100.0% | Average top-share: 62.37% | Top-share range: 55.9% to 69.82%",
+  "interpretation": "The concentration story is stable across the window, so the flagship insight is not driven by a single timestamp artifact.",
+  "limitations": [
+    "Snapshot window is short and synthetic by design for deterministic reproducibility.",
+    "Persistence here is structural consistency, not a prediction of future market behavior.",
+    "Small universe size can amplify concentration metrics relative to broader production universes."
+  ],
+  "window_name": "flagship-persistence-window-v1",
+  "window_size": 4,
+  "dominant_top_market_id": "poly-cpi-jun-2026-over-3",
+  "dominant_top_market_title": "US CPI YoY (Jun 2026) above 3.0%",
+  "persistence_rate": 1.0,
+  "average_top_share": 0.6237,
+  "min_top_share": 0.559,
+  "max_top_share": 0.6982,
+  "snapshots": [
+    {
+      "snapshot_id": "2026-03-28-close",
+      "label": "2026-03-28 close",
+      "as_of": "2026-03-28T23:55:00Z",
+      "feature_snapshot_hash": "9866014967371153834929c5ae0000f4b7f5e19ab26d666cf80b79b44b07782d",
+      "top_market_id": "poly-cpi-jun-2026-over-3",
+      "top_market_title": "US CPI YoY (Jun 2026) above 3.0%",
+      "top_share_of_total_gap": 0.559,
+      "top_to_second_ratio": 1.851,
+      "herfindahl_index": 0.4124
+    },
+    {
+      "snapshot_id": "2026-03-29-close",
+      "label": "2026-03-29 close",
+      "as_of": "2026-03-29T23:55:00Z",
+      "feature_snapshot_hash": "c716c9314eb065fbb554d66701b3c1f8af2ba36709930f34d94848314d02303f",
+      "top_market_id": "poly-cpi-jun-2026-over-3",
+      "top_market_title": "US CPI YoY (Jun 2026) above 3.0%",
+      "top_share_of_total_gap": 0.5957,
+      "top_to_second_ratio": 2.329,
+      "herfindahl_index": 0.4303
+    },
+    {
+      "snapshot_id": "2026-03-30-close",
+      "label": "2026-03-30 close",
+      "as_of": "2026-03-30T23:55:00Z",
+      "feature_snapshot_hash": "c2fb2fcfc6c7163031df6b17696ee218e3018367e9cc309f966fe8e5ac8b5a2e",
+      "top_market_id": "poly-cpi-jun-2026-over-3",
+      "top_market_title": "US CPI YoY (Jun 2026) above 3.0%",
+      "top_share_of_total_gap": 0.6418,
+      "top_to_second_ratio": 2.519,
+      "herfindahl_index": 0.4824
+    },
+    {
+      "snapshot_id": "2026-03-31-close",
+      "label": "2026-03-31 close",
+      "as_of": "2026-03-31T23:55:00Z",
+      "feature_snapshot_hash": "7b2967e7439431e80c6b00664d341310ffe52568d385c9b505f1bc4c0f212854",
+      "top_market_id": "poly-cpi-jun-2026-over-3",
+      "top_market_title": "US CPI YoY (Jun 2026) above 3.0%",
+      "top_share_of_total_gap": 0.6982,
+      "top_to_second_ratio": 3.146,
+      "herfindahl_index": 0.5398
+    }
+  ]
+}

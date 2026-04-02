@@ -2,6 +2,10 @@ from __future__ import annotations
 
 from macrofair.explain.generator import build_explanation
 from macrofair.evaluation.flagship_finding import compute_flagship_finding
+from macrofair.evaluation.longitudinal_findings import (
+    compute_flagship_persistence,
+    compute_secondary_finding,
+)
 from macrofair.features.pipeline import build_feature_row
 from macrofair.ingestion.fred import FREDAdapter
 from macrofair.ingestion.kalshi import KalshiAdapter
@@ -133,3 +137,9 @@ class MacroFairService:
         metadata = get_metadata()
         markets = self.list_markets(limit=100, sort_by="gap")
         return compute_flagship_finding(markets=markets, as_of=metadata["last_refresh"])
+
+    def get_flagship_persistence(self) -> dict:
+        return compute_flagship_persistence()
+
+    def get_secondary_finding(self) -> dict:
+        return compute_secondary_finding()

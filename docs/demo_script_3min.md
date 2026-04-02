@@ -19,7 +19,7 @@ Open the home page and highlight, in order:
 
 Call out this computed headline:
 
-- CPI June 2026 contract contributes 69.82% of total absolute dislocation mass and is 3.146x larger than #2.
+- "Here is the top dislocation": CPI June 2026 contributes 69.82% of total absolute dislocation mass and is 3.146x larger than #2.
 
 Then highlight the core table columns:
 
@@ -65,6 +65,11 @@ Then explicitly call out:
 - limitations
 - how to interpret positive vs negative gap
 
+Then show the findings evidence layer:
+
+- "Here is why this is not just a one-time artifact": top dislocation remains the top contract in 4/4 deterministic snapshots.
+- "Here is a second complementary analytical result": platform gap asymmetry is positive in 4/4 snapshots (Polymarket mean gaps above Kalshi).
+
 ## 2:50 - 3:00 Validation and close
 
 Mention full quality gates and proof pack:
@@ -74,4 +79,8 @@ Mention full quality gates and proof pack:
 - `pytest`
 - `playwright`
 
-Close with one insight example from the top-ranked dislocation.
+Close with three linked messages:
+
+1. Current top dislocation.
+2. Persistence across snapshots.
+3. Complementary platform asymmetry evidence.

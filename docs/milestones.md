@@ -124,3 +124,24 @@ Evidence:
 - Typed flagship finding endpoint added: `GET /api/v1/findings/flagship`.
 - Fresh proof pack generated at:
   - `artifacts/proof/20260402T024608Z-milestone-10-flagship-story/`
+
+## Milestone 11 — Longitudinal and secondary findings evidence
+
+Status: ACCEPTED
+
+Evidence:
+
+- Committed deterministic snapshot window fixture: `data/fixtures/snapshot_window.json`.
+- Longitudinal flagship persistence artifacts:
+	- `artifacts/evaluation/flagship_persistence.json`
+	- `artifacts/evaluation/flagship_persistence.csv`
+	- `artifacts/evaluation/flagship_persistence.svg`
+- Secondary deterministic finding artifacts:
+	- `artifacts/evaluation/secondary_finding.json`
+	- `artifacts/evaluation/secondary_finding.csv`
+	- `artifacts/evaluation/secondary_finding.svg`
+- Typed API endpoints added:
+	- `GET /api/v1/findings/flagship/persistence`
+	- `GET /api/v1/findings/secondary`
+- Fresh proof pack generated at:
+	- `artifacts/proof/20260402T031728Z-milestone-11-longitudinal-findings/`

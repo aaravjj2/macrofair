@@ -1,0 +1,55 @@
+{
+  "headline_finding": "Platform gap asymmetry is positive in 4/4 snapshots: Polymarket mean gaps stay above Kalshi.",
+  "question": "Do platforms exhibit asymmetric signed mispricing across the deterministic snapshot window?",
+  "method": "For each snapshot, compute mean signed gap by platform and measure asymmetry as Polymarket mean gap minus Kalshi mean gap.",
+  "result": "Average asymmetry (Polymarket mean gap - Kalshi mean gap): 7.67 pts | Positive-window share: 100.0%",
+  "interpretation": "A consistently positive asymmetry indicates directional pricing differences across platforms, which complements concentration analysis with a cross-platform structural lens.",
+  "one_sentence": "Across the deterministic window, Polymarket contracts are consistently priced further above fair value than Kalshi contracts on average.",
+  "limitations": [
+    "Only two platforms are represented in the demo fixture universe.",
+    "Mean signed gap can hide within-platform category dispersion.",
+    "Asymmetry is descriptive evidence, not a causal claim."
+  ],
+  "window_name": "flagship-persistence-window-v1",
+  "window_size": 4,
+  "average_asymmetry_gap": 0.0767,
+  "positive_window_share": 1.0,
+  "snapshots": [
+    {
+      "snapshot_id": "2026-03-28-close",
+      "label": "2026-03-28 close",
+      "as_of": "2026-03-28T23:55:00Z",
+      "feature_snapshot_hash": "9866014967371153834929c5ae0000f4b7f5e19ab26d666cf80b79b44b07782d",
+      "polymarket_mean_gap": 0.0651,
+      "kalshi_mean_gap": -0.0146,
+      "asymmetry_gap": 0.0797
+    },
+    {
+      "snapshot_id": "2026-03-29-close",
+      "label": "2026-03-29 close",
+      "as_of": "2026-03-29T23:55:00Z",
+      "feature_snapshot_hash": "c716c9314eb065fbb554d66701b3c1f8af2ba36709930f34d94848314d02303f",
+      "polymarket_mean_gap": 0.0645,
+      "kalshi_mean_gap": -0.0151,
+      "asymmetry_gap": 0.0796
+    },
+    {
+      "snapshot_id": "2026-03-30-close",
+      "label": "2026-03-30 close",
+      "as_of": "2026-03-30T23:55:00Z",
+      "feature_snapshot_hash": "c2fb2fcfc6c7163031df6b17696ee218e3018367e9cc309f966fe8e5ac8b5a2e",
+      "polymarket_mean_gap": 0.0661,
+      "kalshi_mean_gap": -0.0106,
+      "asymmetry_gap": 0.0767
+    },
+    {
+      "snapshot_id": "2026-03-31-close",
+      "label": "2026-03-31 close",
+      "as_of": "2026-03-31T23:55:00Z",
+      "feature_snapshot_hash": "7b2967e7439431e80c6b00664d341310ffe52568d385c9b505f1bc4c0f212854",
+      "polymarket_mean_gap": 0.063,
+      "kalshi_mean_gap": -0.0078,
+      "asymmetry_gap": 0.0708
+    }
+  ]
+}

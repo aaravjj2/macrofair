@@ -64,3 +64,23 @@ export interface FlagshipFinding {
   topToSecondRatio: number;
   herfindahlIndex: number;
 }
+
+export interface FlagshipPersistenceSnapshot {
+  snapshot_id: string;
+  label: string;
+  as_of: string;
+  top_market_id: string;
+  top_market_title: string;
+  top_share_of_total_gap: number;
+  top_to_second_ratio: number;
+  herfindahl_index: number;
+}
+
+export interface SecondaryFindingSnapshot {
+  snapshot_id: string;
+  label: string;
+  as_of: string;
+  polymarket_mean_gap: number;
+  kalshi_mean_gap: number;
+  asymmetry_gap: number;
+}

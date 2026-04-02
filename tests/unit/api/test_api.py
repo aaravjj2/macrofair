@@ -78,3 +78,25 @@ def test_flagship_finding_endpoint() -> None:
     assert payload["top_market_id"] == "poly-cpi-jun-2026-over-3"
     assert payload["top_share_of_total_gap"] > 0.5
     assert len(payload["contributions"]) >= 5
+
+
+def test_flagship_persistence_endpoint() -> None:
+    response = client.get("/api/v1/findings/flagship/persistence")
+    payload = response.json()
+
+    assert response.status_code == 200
+    assert payload["window_name"] == "flagship-persistence-window-v1"
+    assert payload["window_size"] == 4
+    assert payload["dominant_top_market_id"] == "poly-cpi-jun-2026-over-3"
+    assert len(payload["snapshots"]) == 4
+
+
+def test_secondary_finding_endpoint() -> None:
+    response = client.get("/api/v1/findings/secondary")
+    payload = response.json()
+
+    assert response.status_code == 200
+    assert payload["window_name"] == "flagship-persistence-window-v1"
+    assert payload["window_size"] == 4
+    assert payload["average_asymmetry_gap"] > 0
+    assert len(payload["snapshots"]) == 4

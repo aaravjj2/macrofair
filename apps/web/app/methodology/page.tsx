@@ -1,4 +1,24 @@
+import Link from "next/link";
+
+import {
+  FLAGSHIP_PERSISTENCE_SNAPSHOTS,
+  FLAGSHIP_SNAPSHOT_HEADLINE,
+  SECONDARY_FINDING_ONE_SENTENCE,
+  SECONDARY_FINDING_SNAPSHOTS,
+} from "@/lib/findings-data";
+import {
+  summarizeFlagshipPersistence,
+  summarizeSecondaryFinding,
+} from "@/lib/findings-utils";
+
+function formatPct(value: number): string {
+  return `${(value * 100).toFixed(2)}%`;
+}
+
 export default function MethodologyPage() {
+  const persistence = summarizeFlagshipPersistence(FLAGSHIP_PERSISTENCE_SNAPSHOTS);
+  const secondary = summarizeSecondaryFinding(SECONDARY_FINDING_SNAPSHOTS);
+
   return (
     <section className="space-y-4" data-testid="methodology-page">
       <div className="panel rounded-2xl p-6">
@@ -9,6 +29,25 @@ export default function MethodologyPage() {
           then ranks contracts by how strongly crowd price diverges from fair value.
         </p>
       </div>
+
+      <article className="panel rounded-2xl p-5" data-testid="methodology-findings-evidence">
+        <h3 className="text-lg font-semibold">Findings evidence layer</h3>
+        <p className="mt-2 text-sm muted">{FLAGSHIP_SNAPSHOT_HEADLINE}</p>
+        <p className="mt-2 text-sm muted">
+          Persistence check: {persistence.dominantTopMarketTitle} remains top in {formatPct(persistence.persistenceRate)} of
+          deterministic snapshots.
+        </p>
+        <p className="text-sm muted">
+          Secondary check: {SECONDARY_FINDING_ONE_SENTENCE} (average asymmetry {(secondary.averageAsymmetryGap * 100).toFixed(2)} pts).
+        </p>
+        <Link
+          href="/findings"
+          className="mt-3 inline-block rounded-md border border-slate-300/40 px-3 py-2 text-sm hover:border-slate-100"
+          data-testid="methodology-findings-link"
+        >
+          Open full findings evidence
+        </Link>
+      </article>
 
       <div className="grid gap-4 md:grid-cols-2" data-testid="methodology-sections">
         <article className="panel rounded-2xl p-5">

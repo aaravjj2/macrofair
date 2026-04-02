@@ -1,47 +1,53 @@
-# Flagship Finding
+# Findings
 
-## Headline Finding
+## 1) Flagship snapshot finding
 
-In the deterministic demo snapshot, the CPI inflation contract contributes **69.82%** of total absolute dislocation mass and is **3.146x** larger than the second-ranked gap.
+In the latest deterministic demo snapshot, the CPI inflation contract (`poly-cpi-jun-2026-over-3`) contributes **69.82%** of total absolute dislocation mass and is **3.146x** larger than the second-ranked gap.
 
-## Question
-
-How concentrated are crowd-vs-fair dislocations in the current deterministic macro market snapshot?
-
-## Method
-
-1. Score all demo markets with the deterministic service pipeline.
-2. Compute absolute gap for each market: $|\text{market probability} - \text{fair probability}|$.
-3. Rank by absolute gap.
-4. Compute each market's share of total absolute gap mass and concentration statistics (top-share and Herfindahl index).
-
-Computation source:
-
-- `scripts/export_flagship_finding.py`
-- `artifacts/evaluation/flagship_finding.json`
-
-## Result
-
-- Top contract: `poly-cpi-jun-2026-over-3`
-- Top absolute gap: **14.41 pts**
-- Total absolute gap mass: **20.64 pts**
-- Top-share of total: **69.82%**
-- Top-to-second ratio: **3.146x**
-- Concentration index (HHI): **0.5398**
-
-Supporting artifacts:
+Evidence artifacts:
 
 - JSON: `artifacts/evaluation/flagship_finding.json`
 - Contributions table: `artifacts/evaluation/flagship_dislocation_contributions.csv`
 - Category table: `artifacts/evaluation/flagship_category_breakdown.csv`
 - Chart: `artifacts/evaluation/flagship_dislocation_concentration.svg`
 
-## Interpretation
+## 2) Flagship persistence result (longitudinal window)
 
-The demo universe is not showing diffuse, small disagreements. It shows one dominant dislocation that drives most of the total divergence. This makes the product narrative clear for judges: MacroFair surfaces where attention should go first.
+Question: is the flagship concentration signal a one-off artifact or persistent across deterministic snapshots?
 
-## Limitations
+Result across the committed snapshot window (`flagship-persistence-window-v1`):
 
-- The demo universe is intentionally small and fixture-backed.
-- This is a snapshot finding; concentration can shift across refresh windows.
-- Dislocation concentration is a research signal, not a trading instruction.
+- Top market persisted in **4/4 snapshots** (**100.0% persistence**).
+- Average top-share across window: **62.37%**.
+- Top-share range: **55.90%** to **69.82%**.
+
+Evidence artifacts:
+
+- JSON: `artifacts/evaluation/flagship_persistence.json`
+- Table: `artifacts/evaluation/flagship_persistence.csv`
+- Chart: `artifacts/evaluation/flagship_persistence.svg`
+
+## 3) Secondary deterministic finding
+
+Chosen angle: **platform gap asymmetry**.
+
+One-sentence finding:
+
+Across the deterministic window, Polymarket contracts are consistently priced further above fair value than Kalshi contracts on average.
+
+Measured result:
+
+- Average asymmetry (Polymarket mean gap minus Kalshi mean gap): **7.67 pts**.
+- Positive asymmetry windows: **4/4 snapshots** (**100.0%**).
+
+Evidence artifacts:
+
+- JSON: `artifacts/evaluation/secondary_finding.json`
+- Table: `artifacts/evaluation/secondary_finding.csv`
+- Chart: `artifacts/evaluation/secondary_finding.svg`
+
+## Method notes
+
+- All findings run in default deterministic demo mode.
+- Snapshot inputs are committed fixtures: `data/fixtures/snapshot_window.json`.
+- Repeated runs produce identical payloads and hashes in tests.

@@ -109,3 +109,58 @@ class FlagshipFindingPayload(BaseModel):
     herfindahl_index: float
     contributions: list[FlagshipContribution]
     category_breakdown: list[FlagshipCategoryBreakdown]
+
+
+class FlagshipPersistenceSnapshot(BaseModel):
+    snapshot_id: str
+    label: str
+    as_of: str
+    feature_snapshot_hash: str
+    top_market_id: str
+    top_market_title: str
+    top_share_of_total_gap: float
+    top_to_second_ratio: float
+    herfindahl_index: float
+
+
+class FlagshipPersistencePayload(BaseModel):
+    headline_finding: str
+    question: str
+    method: str
+    result: str
+    interpretation: str
+    limitations: list[str]
+    window_name: str
+    window_size: int
+    dominant_top_market_id: str
+    dominant_top_market_title: str
+    persistence_rate: float
+    average_top_share: float
+    min_top_share: float
+    max_top_share: float
+    snapshots: list[FlagshipPersistenceSnapshot]
+
+
+class SecondaryFindingSnapshot(BaseModel):
+    snapshot_id: str
+    label: str
+    as_of: str
+    feature_snapshot_hash: str
+    polymarket_mean_gap: float
+    kalshi_mean_gap: float
+    asymmetry_gap: float
+
+
+class SecondaryFindingPayload(BaseModel):
+    headline_finding: str
+    question: str
+    method: str
+    result: str
+    interpretation: str
+    one_sentence: str
+    limitations: list[str]
+    window_name: str
+    window_size: int
+    average_asymmetry_gap: float
+    positive_window_share: float
+    snapshots: list[SecondaryFindingSnapshot]

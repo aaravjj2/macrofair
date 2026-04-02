@@ -23,6 +23,13 @@ export function TopNav() {
           >
             Methodology
           </Link>
+          <Link
+            href="/findings"
+            className="rounded-md border border-slate-500/40 px-3 py-2 hover:border-slate-300"
+            data-testid="nav-findings-link"
+          >
+            Findings
+          </Link>
         </nav>
       </div>
     </header>

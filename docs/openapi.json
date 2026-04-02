@@ -348,6 +348,42 @@
           }
         }
       }
+    },
+    "/api/v1/findings/flagship/persistence": {
+      "get": {
+        "summary": "Flagship Persistence",
+        "operationId": "flagship_persistence_api_v1_findings_flagship_persistence_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FlagshipPersistencePayload"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/findings/secondary": {
+      "get": {
+        "summary": "Secondary Finding",
+        "operationId": "secondary_finding_api_v1_findings_secondary_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SecondaryFindingPayload"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -575,6 +611,148 @@
           "category_breakdown"
         ],
         "title": "FlagshipFindingPayload"
+      },
+      "FlagshipPersistencePayload": {
+        "properties": {
+          "headline_finding": {
+            "type": "string",
+            "title": "Headline Finding"
+          },
+          "question": {
+            "type": "string",
+            "title": "Question"
+          },
+          "method": {
+            "type": "string",
+            "title": "Method"
+          },
+          "result": {
+            "type": "string",
+            "title": "Result"
+          },
+          "interpretation": {
+            "type": "string",
+            "title": "Interpretation"
+          },
+          "limitations": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Limitations"
+          },
+          "window_name": {
+            "type": "string",
+            "title": "Window Name"
+          },
+          "window_size": {
+            "type": "integer",
+            "title": "Window Size"
+          },
+          "dominant_top_market_id": {
+            "type": "string",
+            "title": "Dominant Top Market Id"
+          },
+          "dominant_top_market_title": {
+            "type": "string",
+            "title": "Dominant Top Market Title"
+          },
+          "persistence_rate": {
+            "type": "number",
+            "title": "Persistence Rate"
+          },
+          "average_top_share": {
+            "type": "number",
+            "title": "Average Top Share"
+          },
+          "min_top_share": {
+            "type": "number",
+            "title": "Min Top Share"
+          },
+          "max_top_share": {
+            "type": "number",
+            "title": "Max Top Share"
+          },
+          "snapshots": {
+            "items": {
+              "$ref": "#/components/schemas/FlagshipPersistenceSnapshot"
+            },
+            "type": "array",
+            "title": "Snapshots"
+          }
+        },
+        "type": "object",
+        "required": [
+          "headline_finding",
+          "question",
+          "method",
+          "result",
+          "interpretation",
+          "limitations",
+          "window_name",
+          "window_size",
+          "dominant_top_market_id",
+          "dominant_top_market_title",
+          "persistence_rate",
+          "average_top_share",
+          "min_top_share",
+          "max_top_share",
+          "snapshots"
+        ],
+        "title": "FlagshipPersistencePayload"
+      },
+      "FlagshipPersistenceSnapshot": {
+        "properties": {
+          "snapshot_id": {
+            "type": "string",
+            "title": "Snapshot Id"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "as_of": {
+            "type": "string",
+            "title": "As Of"
+          },
+          "feature_snapshot_hash": {
+            "type": "string",
+            "title": "Feature Snapshot Hash"
+          },
+          "top_market_id": {
+            "type": "string",
+            "title": "Top Market Id"
+          },
+          "top_market_title": {
+            "type": "string",
+            "title": "Top Market Title"
+          },
+          "top_share_of_total_gap": {
+            "type": "number",
+            "title": "Top Share Of Total Gap"
+          },
+          "top_to_second_ratio": {
+            "type": "number",
+            "title": "Top To Second Ratio"
+          },
+          "herfindahl_index": {
+            "type": "number",
+            "title": "Herfindahl Index"
+          }
+        },
+        "type": "object",
+        "required": [
+          "snapshot_id",
+          "label",
+          "as_of",
+          "feature_snapshot_hash",
+          "top_market_id",
+          "top_market_title",
+          "top_share_of_total_gap",
+          "top_to_second_ratio",
+          "herfindahl_index"
+        ],
+        "title": "FlagshipPersistenceSnapshot"
       },
       "HTTPValidationError": {
         "properties": {
@@ -879,6 +1057,123 @@
           "sources"
         ],
         "title": "MetadataResponse"
+      },
+      "SecondaryFindingPayload": {
+        "properties": {
+          "headline_finding": {
+            "type": "string",
+            "title": "Headline Finding"
+          },
+          "question": {
+            "type": "string",
+            "title": "Question"
+          },
+          "method": {
+            "type": "string",
+            "title": "Method"
+          },
+          "result": {
+            "type": "string",
+            "title": "Result"
+          },
+          "interpretation": {
+            "type": "string",
+            "title": "Interpretation"
+          },
+          "one_sentence": {
+            "type": "string",
+            "title": "One Sentence"
+          },
+          "limitations": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Limitations"
+          },
+          "window_name": {
+            "type": "string",
+            "title": "Window Name"
+          },
+          "window_size": {
+            "type": "integer",
+            "title": "Window Size"
+          },
+          "average_asymmetry_gap": {
+            "type": "number",
+            "title": "Average Asymmetry Gap"
+          },
+          "positive_window_share": {
+            "type": "number",
+            "title": "Positive Window Share"
+          },
+          "snapshots": {
+            "items": {
+              "$ref": "#/components/schemas/SecondaryFindingSnapshot"
+            },
+            "type": "array",
+            "title": "Snapshots"
+          }
+        },
+        "type": "object",
+        "required": [
+          "headline_finding",
+          "question",
+          "method",
+          "result",
+          "interpretation",
+          "one_sentence",
+          "limitations",
+          "window_name",
+          "window_size",
+          "average_asymmetry_gap",
+          "positive_window_share",
+          "snapshots"
+        ],
+        "title": "SecondaryFindingPayload"
+      },
+      "SecondaryFindingSnapshot": {
+        "properties": {
+          "snapshot_id": {
+            "type": "string",
+            "title": "Snapshot Id"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "as_of": {
+            "type": "string",
+            "title": "As Of"
+          },
+          "feature_snapshot_hash": {
+            "type": "string",
+            "title": "Feature Snapshot Hash"
+          },
+          "polymarket_mean_gap": {
+            "type": "number",
+            "title": "Polymarket Mean Gap"
+          },
+          "kalshi_mean_gap": {
+            "type": "number",
+            "title": "Kalshi Mean Gap"
+          },
+          "asymmetry_gap": {
+            "type": "number",
+            "title": "Asymmetry Gap"
+          }
+        },
+        "type": "object",
+        "required": [
+          "snapshot_id",
+          "label",
+          "as_of",
+          "feature_snapshot_hash",
+          "polymarket_mean_gap",
+          "kalshi_mean_gap",
+          "asymmetry_gap"
+        ],
+        "title": "SecondaryFindingSnapshot"
       },
       "ValidationError": {
         "properties": {

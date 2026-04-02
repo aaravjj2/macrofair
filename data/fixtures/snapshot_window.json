@@ -1,0 +1,294 @@
+{
+  "series_name": "flagship-persistence-window-v1",
+  "description": "Deterministic synthetic snapshot window used to test persistence of flagship concentration and complementary findings.",
+  "snapshots": [
+    {
+      "snapshot_id": "2026-03-28-close",
+      "label": "2026-03-28 close",
+      "as_of": "2026-03-28T23:55:00Z",
+      "overrides": {
+        "poly-cpi-jun-2026-over-3": {
+          "updated_at": "2026-03-28T23:55:00Z",
+          "market_probability": 0.61,
+          "best_bid": 0.6,
+          "best_ask": 0.62,
+          "midpoint": 0.61,
+          "spread": 0.034,
+          "volume_24h": 85400,
+          "open_interest": 880000,
+          "liquidity_score": 0.72,
+          "macro_signal": 0.55,
+          "momentum_24h": -0.01
+        },
+        "kalshi-fed-sep-2026-cut": {
+          "updated_at": "2026-03-28T23:55:00Z",
+          "market_probability": 0.46,
+          "best_bid": 0.45,
+          "best_ask": 0.47,
+          "midpoint": 0.46,
+          "spread": 0.023,
+          "volume_24h": 68200,
+          "open_interest": 620000,
+          "liquidity_score": 0.68,
+          "macro_signal": 0.56,
+          "momentum_24h": 0.015
+        },
+        "poly-unemp-dec-2026-over-4_5": {
+          "updated_at": "2026-03-28T23:55:00Z",
+          "market_probability": 0.44,
+          "best_bid": 0.43,
+          "best_ask": 0.45,
+          "midpoint": 0.44,
+          "spread": 0.022,
+          "volume_24h": 44200,
+          "open_interest": 324000,
+          "liquidity_score": 0.61,
+          "macro_signal": 0.35,
+          "momentum_24h": -0.006
+        },
+        "kalshi-recession-q4-2026": {
+          "updated_at": "2026-03-28T23:55:00Z",
+          "market_probability": 0.29,
+          "best_bid": 0.27,
+          "best_ask": 0.31,
+          "midpoint": 0.29,
+          "spread": 0.044,
+          "volume_24h": 36900,
+          "open_interest": 410000,
+          "liquidity_score": 0.53,
+          "macro_signal": 0.39,
+          "momentum_24h": 0.014
+        },
+        "poly-gdp-q3-2026-below-1_5": {
+          "updated_at": "2026-03-28T23:55:00Z",
+          "market_probability": 0.44,
+          "best_bid": 0.43,
+          "best_ask": 0.45,
+          "midpoint": 0.44,
+          "spread": 0.024,
+          "volume_24h": 28400,
+          "open_interest": 280000,
+          "liquidity_score": 0.57,
+          "macro_signal": 0.51,
+          "momentum_24h": 0.009
+        }
+      }
+    },
+    {
+      "snapshot_id": "2026-03-29-close",
+      "label": "2026-03-29 close",
+      "as_of": "2026-03-29T23:55:00Z",
+      "overrides": {
+        "poly-cpi-jun-2026-over-3": {
+          "updated_at": "2026-03-29T23:55:00Z",
+          "market_probability": 0.62,
+          "best_bid": 0.61,
+          "best_ask": 0.63,
+          "midpoint": 0.62,
+          "spread": 0.033,
+          "volume_24h": 89100,
+          "open_interest": 892000,
+          "liquidity_score": 0.73,
+          "macro_signal": 0.547,
+          "momentum_24h": -0.012
+        },
+        "kalshi-fed-sep-2026-cut": {
+          "updated_at": "2026-03-29T23:55:00Z",
+          "market_probability": 0.47,
+          "best_bid": 0.46,
+          "best_ask": 0.48,
+          "midpoint": 0.47,
+          "spread": 0.022,
+          "volume_24h": 71500,
+          "open_interest": 632000,
+          "liquidity_score": 0.685,
+          "macro_signal": 0.565,
+          "momentum_24h": 0.018
+        },
+        "poly-unemp-dec-2026-over-4_5": {
+          "updated_at": "2026-03-29T23:55:00Z",
+          "market_probability": 0.43,
+          "best_bid": 0.42,
+          "best_ask": 0.44,
+          "midpoint": 0.43,
+          "spread": 0.021,
+          "volume_24h": 50100,
+          "open_interest": 332000,
+          "liquidity_score": 0.615,
+          "macro_signal": 0.354,
+          "momentum_24h": -0.007
+        },
+        "kalshi-recession-q4-2026": {
+          "updated_at": "2026-03-29T23:55:00Z",
+          "market_probability": 0.29,
+          "best_bid": 0.27,
+          "best_ask": 0.31,
+          "midpoint": 0.29,
+          "spread": 0.043,
+          "volume_24h": 40100,
+          "open_interest": 418000,
+          "liquidity_score": 0.54,
+          "macro_signal": 0.394,
+          "momentum_24h": 0.016
+        },
+        "poly-gdp-q3-2026-below-1_5": {
+          "updated_at": "2026-03-29T23:55:00Z",
+          "market_probability": 0.45,
+          "best_bid": 0.44,
+          "best_ask": 0.46,
+          "midpoint": 0.45,
+          "spread": 0.023,
+          "volume_24h": 31600,
+          "open_interest": 286000,
+          "liquidity_score": 0.58,
+          "macro_signal": 0.515,
+          "momentum_24h": 0.01
+        }
+      }
+    },
+    {
+      "snapshot_id": "2026-03-30-close",
+      "label": "2026-03-30 close",
+      "as_of": "2026-03-30T23:55:00Z",
+      "overrides": {
+        "poly-cpi-jun-2026-over-3": {
+          "updated_at": "2026-03-30T23:55:00Z",
+          "market_probability": 0.63,
+          "best_bid": 0.62,
+          "best_ask": 0.64,
+          "midpoint": 0.63,
+          "spread": 0.032,
+          "volume_24h": 97800,
+          "open_interest": 902000,
+          "liquidity_score": 0.735,
+          "macro_signal": 0.544,
+          "momentum_24h": -0.013
+        },
+        "kalshi-fed-sep-2026-cut": {
+          "updated_at": "2026-03-30T23:55:00Z",
+          "market_probability": 0.48,
+          "best_bid": 0.47,
+          "best_ask": 0.49,
+          "midpoint": 0.48,
+          "spread": 0.022,
+          "volume_24h": 77800,
+          "open_interest": 644000,
+          "liquidity_score": 0.69,
+          "macro_signal": 0.568,
+          "momentum_24h": 0.02
+        },
+        "poly-unemp-dec-2026-over-4_5": {
+          "updated_at": "2026-03-30T23:55:00Z",
+          "market_probability": 0.43,
+          "best_bid": 0.42,
+          "best_ask": 0.44,
+          "midpoint": 0.43,
+          "spread": 0.021,
+          "volume_24h": 56100,
+          "open_interest": 336000,
+          "liquidity_score": 0.618,
+          "macro_signal": 0.357,
+          "momentum_24h": -0.007
+        },
+        "kalshi-recession-q4-2026": {
+          "updated_at": "2026-03-30T23:55:00Z",
+          "market_probability": 0.3,
+          "best_bid": 0.28,
+          "best_ask": 0.32,
+          "midpoint": 0.3,
+          "spread": 0.042,
+          "volume_24h": 44100,
+          "open_interest": 424000,
+          "liquidity_score": 0.545,
+          "macro_signal": 0.398,
+          "momentum_24h": 0.017
+        },
+        "poly-gdp-q3-2026-below-1_5": {
+          "updated_at": "2026-03-30T23:55:00Z",
+          "market_probability": 0.45,
+          "best_bid": 0.44,
+          "best_ask": 0.46,
+          "midpoint": 0.45,
+          "spread": 0.023,
+          "volume_24h": 34900,
+          "open_interest": 292000,
+          "liquidity_score": 0.585,
+          "macro_signal": 0.518,
+          "momentum_24h": 0.01
+        }
+      }
+    },
+    {
+      "snapshot_id": "2026-03-31-close",
+      "label": "2026-03-31 close",
+      "as_of": "2026-03-31T23:55:00Z",
+      "overrides": {
+        "poly-cpi-jun-2026-over-3": {
+          "updated_at": "2026-03-31T23:55:00Z",
+          "market_probability": 0.64,
+          "best_bid": 0.63,
+          "best_ask": 0.66,
+          "midpoint": 0.645,
+          "spread": 0.03,
+          "volume_24h": 128500,
+          "open_interest": 912000,
+          "liquidity_score": 0.74,
+          "macro_signal": 0.54,
+          "momentum_24h": -0.015
+        },
+        "kalshi-fed-sep-2026-cut": {
+          "updated_at": "2026-03-31T23:55:00Z",
+          "market_probability": 0.49,
+          "best_bid": 0.48,
+          "best_ask": 0.5,
+          "midpoint": 0.49,
+          "spread": 0.02,
+          "volume_24h": 99500,
+          "open_interest": 654100,
+          "liquidity_score": 0.69,
+          "macro_signal": 0.57,
+          "momentum_24h": 0.021
+        },
+        "poly-unemp-dec-2026-over-4_5": {
+          "updated_at": "2026-03-31T23:55:00Z",
+          "market_probability": 0.42,
+          "best_bid": 0.41,
+          "best_ask": 0.43,
+          "midpoint": 0.42,
+          "spread": 0.02,
+          "volume_24h": 70800,
+          "open_interest": 340200,
+          "liquidity_score": 0.62,
+          "macro_signal": 0.36,
+          "momentum_24h": -0.008
+        },
+        "kalshi-recession-q4-2026": {
+          "updated_at": "2026-03-31T23:55:00Z",
+          "market_probability": 0.31,
+          "best_bid": 0.29,
+          "best_ask": 0.33,
+          "midpoint": 0.31,
+          "spread": 0.04,
+          "volume_24h": 55200,
+          "open_interest": 430700,
+          "liquidity_score": 0.55,
+          "macro_signal": 0.4,
+          "momentum_24h": 0.018
+        },
+        "poly-gdp-q3-2026-below-1_5": {
+          "updated_at": "2026-03-31T23:55:00Z",
+          "market_probability": 0.46,
+          "best_bid": 0.45,
+          "best_ask": 0.47,
+          "midpoint": 0.46,
+          "spread": 0.02,
+          "volume_24h": 43700,
+          "open_interest": 298100,
+          "liquidity_score": 0.59,
+          "macro_signal": 0.52,
+          "momentum_24h": 0.011
+        }
+      }
+    }
+  ]
+}
