@@ -166,3 +166,173 @@ Evidence:
 	- `docs/zerve_integration.md`
 - Fresh proof pack generated at:
 	- `artifacts/proof/20260402T033334Z-milestone-12-zerve-integration/`
+
+## Milestone 13 — Live Zerve verification hardening
+
+Status: ACCEPTED
+
+Evidence:
+
+- Added sanitized live verification exporter:
+	- `scripts/verify_zerve_live.py`
+- Live verification artifact (key-safe):
+	- `artifacts/evaluation/zerve_live_verification.json`
+- Updated default integration base URL and env template:
+	- `src/macrofair/integrations/zerve/config.py`
+	- `.env.example`
+- Fresh proof pack generated at:
+	- `artifacts/proof/20260402T055144Z-milestone-13-live-zerve-verification/`
+
+## Milestone 14 — Public URL verification
+
+Status: ACCEPTED
+
+Evidence:
+
+- Public URL declarations and checks:
+	- `artifacts/evaluation/public_urls.json`
+	- `artifacts/evaluation/public_url_verification.json`
+	- `artifacts/evaluation/public_checks/`
+- Fresh proof pack generated at:
+	- `artifacts/proof/20260402T055144Z-milestone-14-public-url-verification/`
+
+## Milestone 15 — Expanded longitudinal window
+
+Status: ACCEPTED
+
+Evidence:
+
+- Added deterministic snapshot-window generator:
+	- `scripts/generate_expanded_snapshot_window.py`
+- Expanded snapshot fixture to v2 (12 snapshots):
+	- `data/fixtures/snapshot_window.json`
+- Refreshed persistence artifacts:
+	- `artifacts/evaluation/flagship_persistence.json`
+	- `artifacts/evaluation/flagship_persistence.csv`
+	- `artifacts/evaluation/flagship_persistence.svg`
+- Fresh proof pack generated at:
+	- `artifacts/proof/20260402T055144Z-milestone-15-expanded-snapshot-window/`
+
+## Milestone 16 — Third deterministic finding
+
+Status: ACCEPTED
+
+Evidence:
+
+- Added category-drift third finding computation:
+	- `src/macrofair/evaluation/longitudinal_findings.py`
+- Third finding artifacts:
+	- `artifacts/evaluation/third_finding.json`
+	- `artifacts/evaluation/third_finding.csv`
+	- `artifacts/evaluation/third_finding.svg`
+	- `artifacts/evaluation/third_finding_snapshot_category_shares.csv`
+- Fresh proof pack generated at:
+	- `artifacts/proof/20260402T055144Z-milestone-16-third-deterministic-finding/`
+
+## Milestone 17 — Consolidated findings/report surfaces
+
+Status: ACCEPTED
+
+Evidence:
+
+- Added typed consolidated schemas and service payload builders:
+	- `src/macrofair/schemas.py`
+	- `src/macrofair/service.py`
+- Added API endpoints:
+	- `GET /api/v1/findings`
+	- `GET /api/v1/findings/report`
+	- `GET /api/v1/reports/submission`
+	- `GET /api/v1/findings/third`
+- Consolidated artifacts:
+	- `artifacts/evaluation/findings_index.json`
+	- `artifacts/evaluation/findings_report.json`
+	- `artifacts/evaluation/submission_report.json`
+- Fresh proof pack generated at:
+	- `artifacts/proof/20260402T055144Z-milestone-17-consolidated-findings-reports/`
+
+## Milestone 18 — Export bundle expansion
+
+Status: ACCEPTED
+
+Evidence:
+
+- Exporters expanded for third finding and consolidated reports:
+	- `scripts/export_longitudinal_findings.py`
+	- `scripts/export_zerve_submission_package.py`
+- Updated package/report artifacts:
+	- `artifacts/evaluation/zerve_submission_package.json`
+	- `artifacts/evaluation/findings_report.json`
+- Fresh proof pack generated at:
+	- `artifacts/proof/20260402T055144Z-milestone-18-export-bundle-expansion/`
+
+## Milestone 19 — Findings UX expansion
+
+Status: ACCEPTED
+
+Evidence:
+
+- Findings/methodology UI updated for v2 window and third finding:
+	- `apps/web/app/findings/page.tsx`
+	- `apps/web/app/methodology/page.tsx`
+	- `apps/web/lib/findings-data.ts`
+	- `apps/web/lib/findings-utils.ts`
+- E2E updated to validate third findings panel:
+	- `tests/e2e/smoke.spec.ts`
+- Fresh proof pack generated at:
+	- `artifacts/proof/20260402T055144Z-milestone-19-findings-ui-expansion/`
+
+## Milestone 20 — Docs and demo freeze
+
+Status: ACCEPTED
+
+Evidence:
+
+- Findings, API, integration, and submission docs refreshed:
+	- `docs/findings.md`
+	- `api_spec.md`
+	- `docs/zerve_integration.md`
+	- `docs/demo_script_3min.md`
+	- `docs/submission_summary_300w.md`
+	- `README.md`
+- Fresh proof pack generated at:
+	- `artifacts/proof/20260402T055144Z-milestone-20-docs-and-demo-freeze/`
+
+## Milestone 21 — Gate hardening and regression coverage
+
+Status: ACCEPTED
+
+Evidence:
+
+- Updated tests for v2 window, third finding, and report endpoints:
+	- `tests/unit/api/test_api.py`
+	- `tests/unit/evaluation/test_longitudinal_findings.py`
+	- `tests/unit/evaluation/test_zerve_submission_package.py`
+	- `apps/web/lib/__tests__/findings-utils.test.ts`
+- Final gate summary:
+	- `artifacts/evaluation/gate_summary_13_22.json`
+- Fresh proof pack generated at:
+	- `artifacts/proof/20260402T055144Z-milestone-21-gate-hardening/`
+
+## Milestone 22 — Submission readiness
+
+Status: ACCEPTED
+
+Evidence:
+
+- Finalized evaluation/report/public/live verification artifacts:
+	- `artifacts/evaluation/findings_index.json`
+	- `artifacts/evaluation/findings_report.json`
+	- `artifacts/evaluation/submission_report.json`
+	- `artifacts/evaluation/public_url_verification.json`
+	- `artifacts/evaluation/zerve_live_verification.json`
+- Fresh proof pack generated at:
+	- `artifacts/proof/20260402T055144Z-milestone-22-submission-readiness/`
+
+## Milestone 13–22 Rollup
+
+Status: ACCEPTED
+
+Evidence:
+
+- Consolidated rollup proof pack generated at:
+	- `artifacts/proof/20260402T055144Z-milestone-rollup-13-22/`

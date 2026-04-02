@@ -1,0 +1,16 @@
+{
+  "checked_at_utc": "20260402T055051Z",
+  "frontend_url": "https://major-baths-ask.loca.lt",
+  "api_url": "https://fancy-apples-like.loca.lt",
+  "status_codes": {
+    "api_health": 200,
+    "api_metadata": 200,
+    "api_markets": 200,
+    "frontend_home": 200,
+    "frontend_methodology": 200
+  },
+  "content_checks": {
+    "frontend_home_has_testid": true,
+    "frontend_methodology_has_testid": true
+  }
+}

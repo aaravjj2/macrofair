@@ -31,3 +31,5 @@ artifacts/tmp/
 .env.*
 !.env.example
 
+#keys
+ZERVE_API_KEY

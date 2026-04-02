@@ -1,0 +1,6 @@
+{
+  "frontend_url": "https://major-baths-ask.loca.lt",
+  "api_url": "https://fancy-apples-like.loca.lt",
+  "checked_at_utc": "20260402T055030Z",
+  "notes": "LocalTunnel public endpoints mapped to production Next.js and FastAPI servers."
+}

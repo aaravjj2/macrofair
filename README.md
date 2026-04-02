@@ -7,8 +7,9 @@ MacroFair is a macro prediction-market mispricing detector. It compares market-i
 MacroFair now ships a three-part deterministic findings package:
 
 1. Flagship snapshot finding: CPI June 2026 contributes 69.82% of dislocation mass (3.146x #2).
-2. Longitudinal persistence: top dislocation persists in 4/4 committed snapshots.
-3. Secondary finding (platform asymmetry): Polymarket mean gaps remain above Kalshi in 4/4 snapshots.
+2. Longitudinal persistence: dominant top dislocation persists in 11/12 committed snapshots.
+3. Secondary finding (platform asymmetry): Polymarket mean gaps remain above Kalshi in 12/12 snapshots.
+4. Third finding (category drift): inflation share rises by 30.66 points from first to last snapshot.
 
 Evidence:
 
@@ -16,6 +17,8 @@ Evidence:
 - `artifacts/evaluation/flagship_finding.json`
 - `artifacts/evaluation/flagship_persistence.json`
 - `artifacts/evaluation/secondary_finding.json`
+- `artifacts/evaluation/third_finding.json`
+- `artifacts/evaluation/findings_report.json`
 
 ## Why this matters
 
@@ -106,6 +109,10 @@ Integration docs: `docs/zerve_integration.md`
 - `GET /api/v1/findings/flagship`
 - `GET /api/v1/findings/flagship/persistence`
 - `GET /api/v1/findings/secondary`
+- `GET /api/v1/findings/third`
+- `GET /api/v1/findings`
+- `GET /api/v1/findings/report`
+- `GET /api/v1/reports/submission`
 - `GET /api/v1/snapshots/latest`
 - `GET /api/v1/compare`
 - `GET /api/v1/integrations/zerve/status`
@@ -164,3 +171,20 @@ Latest milestone-11 proof pack:
 Latest milestone-12 proof pack:
 
 - `artifacts/proof/20260402T033334Z-milestone-12-zerve-integration/`
+
+Latest milestone-13 through milestone-22 proof packs:
+
+- `artifacts/proof/20260402T055144Z-milestone-13-live-zerve-verification/`
+- `artifacts/proof/20260402T055144Z-milestone-14-public-url-verification/`
+- `artifacts/proof/20260402T055144Z-milestone-15-expanded-snapshot-window/`
+- `artifacts/proof/20260402T055144Z-milestone-16-third-deterministic-finding/`
+- `artifacts/proof/20260402T055144Z-milestone-17-consolidated-findings-reports/`
+- `artifacts/proof/20260402T055144Z-milestone-18-export-bundle-expansion/`
+- `artifacts/proof/20260402T055144Z-milestone-19-findings-ui-expansion/`
+- `artifacts/proof/20260402T055144Z-milestone-20-docs-and-demo-freeze/`
+- `artifacts/proof/20260402T055144Z-milestone-21-gate-hardening/`
+- `artifacts/proof/20260402T055144Z-milestone-22-submission-readiness/`
+
+Latest milestone rollup proof pack:
+
+- `artifacts/proof/20260402T055144Z-milestone-rollup-13-22/`

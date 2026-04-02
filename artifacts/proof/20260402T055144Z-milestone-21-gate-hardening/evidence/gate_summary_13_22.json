@@ -1,0 +1,35 @@
+{
+  "checked_at_utc": "20260402T055144Z",
+  "commands": [
+    "npm run tsc",
+    "npm run vitest",
+    "PYTHONPATH=src /home/aarav/Aarav/macrofair/.venv/bin/python -m pytest -q",
+    "npm run playwright"
+  ],
+  "results": {
+    "tsc": {
+      "passed": true,
+      "errors": 0
+    },
+    "vitest": {
+      "passed": true,
+      "tests_passed": 10,
+      "tests_failed": 0,
+      "tests_skipped": 0
+    },
+    "pytest": {
+      "passed": true,
+      "tests_passed": 44,
+      "tests_failed": 0,
+      "tests_skipped": 0
+    },
+    "playwright": {
+      "passed": true,
+      "tests_passed": 1,
+      "tests_failed": 0,
+      "tests_skipped": 0,
+      "retries": 0,
+      "workers": 1
+    }
+  }
+}

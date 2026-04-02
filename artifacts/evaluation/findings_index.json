@@ -1,0 +1,13 @@
+{
+  "generated_at": "2026-03-31T23:55:00Z",
+  "mode": "demo",
+  "window_name": "flagship-persistence-window-v2",
+  "window_size": 12,
+  "headlines": {
+    "flagship": "US CPI YoY (Jun 2026) above 3.0% contributes 69.82% of total absolute gap mass, 3.146x larger than the second-ranked dislocation.",
+    "flagship_persistence": "US CPI YoY (Jun 2026) above 3.0% stays the top dislocation in 11/12 deterministic snapshots.",
+    "secondary": "Platform gap asymmetry is positive in 12/12 snapshots: Polymarket mean gaps stay above Kalshi.",
+    "third": "Inflation dislocation share increased by 30.66 pts across the deterministic window."
+  },
+  "payload_hash": "347e26d31254f9ced05227cf16e618b1f7795a72b4f406315e8067f77702ac94"
+}

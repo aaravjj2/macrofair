@@ -1,0 +1,924 @@
+{
+  "report_name": "macrofair-findings-report",
+  "report_version": "1.0.0",
+  "generated_at": "2026-03-31T23:55:00Z",
+  "mode": "demo",
+  "app_version": "0.1.0",
+  "model_version": "baseline-v1",
+  "schema_version": "1.0.0",
+  "metadata": {
+    "supported_categories": [
+      "inflation",
+      "fed",
+      "unemployment",
+      "recession",
+      "gdp"
+    ],
+    "sources": {
+      "polymarket": "fixture-2026-03-31",
+      "kalshi": "fixture-2026-03-31",
+      "fred": "fixture-2026-03-31"
+    },
+    "snapshot_as_of": "2026-03-31T23:55:00Z"
+  },
+  "findings": {
+    "flagship": {
+      "headline_finding": "US CPI YoY (Jun 2026) above 3.0% contributes 69.82% of total absolute gap mass, 3.146x larger than the second-ranked dislocation.",
+      "question": "How concentrated are crowd-vs-fair dislocations in the current demo snapshot?",
+      "method": "Compute absolute gap for each scored market, divide by total absolute gap mass, and summarize concentration using top-share and Herfindahl index.",
+      "result": "Top dislocation share: 69.82% | Top gap: 14.41 pts | Concentration index (HHI): 0.5398",
+      "interpretation": "Dislocations are highly concentrated rather than evenly distributed, so judges can understand the product quickly by focusing on the top ranked contract.",
+      "limitations": [
+        "Demo universe is intentionally small and fixture-based.",
+        "Finding is snapshot-specific and should be monitored over time.",
+        "Concentration does not imply tradability or guaranteed edge."
+      ],
+      "as_of": "2026-03-31T23:55:00Z",
+      "top_market_id": "poly-cpi-jun-2026-over-3",
+      "top_market_title": "US CPI YoY (Jun 2026) above 3.0%",
+      "top_absolute_gap": 0.1441,
+      "total_absolute_gap": 0.2064,
+      "top_share_of_total_gap": 0.6982,
+      "top_to_second_ratio": 3.146,
+      "herfindahl_index": 0.5398,
+      "contributions": [
+        {
+          "rank": 1,
+          "market_id": "poly-cpi-jun-2026-over-3",
+          "title": "US CPI YoY (Jun 2026) above 3.0%",
+          "category": "inflation",
+          "platform": "Polymarket",
+          "gap": 0.1441,
+          "absolute_gap": 0.1441,
+          "share_of_total_gap": 0.6982,
+          "cumulative_share": 0.6982,
+          "confidence": 0.8357
+        },
+        {
+          "rank": 2,
+          "market_id": "poly-unemp-dec-2026-over-4_5",
+          "title": "US unemployment above 4.5% by Dec 2026",
+          "category": "unemployment",
+          "platform": "Polymarket",
+          "gap": 0.0458,
+          "absolute_gap": 0.0458,
+          "share_of_total_gap": 0.2219,
+          "cumulative_share": 0.9201,
+          "confidence": 0.8283
+        },
+        {
+          "rank": 3,
+          "market_id": "kalshi-recession-q4-2026",
+          "title": "US recession declared by Q4 2026",
+          "category": "recession",
+          "platform": "Kalshi",
+          "gap": -0.01,
+          "absolute_gap": 0.01,
+          "share_of_total_gap": 0.0484,
+          "cumulative_share": 0.9685,
+          "confidence": 0.798
+        },
+        {
+          "rank": 4,
+          "market_id": "kalshi-fed-sep-2026-cut",
+          "title": "Fed cuts target rate by Sep 2026",
+          "category": "fed",
+          "platform": "Kalshi",
+          "gap": -0.0056,
+          "absolute_gap": 0.0056,
+          "share_of_total_gap": 0.0271,
+          "cumulative_share": 0.9956,
+          "confidence": 0.8828
+        },
+        {
+          "rank": 5,
+          "market_id": "poly-gdp-q3-2026-below-1_5",
+          "title": "US real GDP growth (Q3 2026) below 1.5%",
+          "category": "gdp",
+          "platform": "Polymarket",
+          "gap": -0.0009,
+          "absolute_gap": 0.0009,
+          "share_of_total_gap": 0.0044,
+          "cumulative_share": 1.0,
+          "confidence": 0.8433
+        }
+      ],
+      "category_breakdown": [
+        {
+          "category": "inflation",
+          "absolute_gap": 0.1441,
+          "share_of_total_gap": 0.6982
+        },
+        {
+          "category": "unemployment",
+          "absolute_gap": 0.0458,
+          "share_of_total_gap": 0.2219
+        },
+        {
+          "category": "recession",
+          "absolute_gap": 0.01,
+          "share_of_total_gap": 0.0484
+        },
+        {
+          "category": "fed",
+          "absolute_gap": 0.0056,
+          "share_of_total_gap": 0.0271
+        },
+        {
+          "category": "gdp",
+          "absolute_gap": 0.0009,
+          "share_of_total_gap": 0.0044
+        }
+      ]
+    },
+    "flagship_persistence": {
+      "headline_finding": "US CPI YoY (Jun 2026) above 3.0% stays the top dislocation in 11/12 deterministic snapshots.",
+      "question": "Is the flagship dislocation concentration a one-off or persistent across deterministic snapshots?",
+      "method": "Replay the same deterministic scoring pipeline across a committed snapshot window and recompute top-share, top-to-second ratio, and HHI for each timestamp.",
+      "result": "Persistence rate: 91.67% | Average top-share: 54.55% | Top-share range: 40.81% to 69.82%",
+      "interpretation": "The concentration story is stable across the window, so the flagship insight is not driven by a single timestamp artifact.",
+      "limitations": [
+        "Snapshot window is short and synthetic by design for deterministic reproducibility.",
+        "Persistence here is structural consistency, not a prediction of future market behavior.",
+        "Small universe size can amplify concentration metrics relative to broader production universes."
+      ],
+      "window_name": "flagship-persistence-window-v2",
+      "window_size": 12,
+      "dominant_top_market_id": "poly-cpi-jun-2026-over-3",
+      "dominant_top_market_title": "US CPI YoY (Jun 2026) above 3.0%",
+      "persistence_rate": 0.9167,
+      "average_top_share": 0.5455,
+      "min_top_share": 0.4081,
+      "max_top_share": 0.6982,
+      "snapshots": [
+        {
+          "snapshot_id": "2026-03-20-close",
+          "label": "2026-03-20 close",
+          "as_of": "2026-03-20T23:55:00Z",
+          "feature_snapshot_hash": "9b0fdbcef32e39096c7cdbd73117eb8e120ee980c415892fc29d2ca557c6984f",
+          "top_market_id": "poly-unemp-dec-2026-over-4_5",
+          "top_market_title": "US unemployment above 4.5% by Dec 2026",
+          "top_share_of_total_gap": 0.4081,
+          "top_to_second_ratio": 1.042,
+          "herfindahl_index": 0.3395
+        },
+        {
+          "snapshot_id": "2026-03-21-close",
+          "label": "2026-03-21 close",
+          "as_of": "2026-03-21T23:55:00Z",
+          "feature_snapshot_hash": "da559f0a32653286ed89c3f96e66e7e523fd417ae7105523ea9510c6830a534e",
+          "top_market_id": "poly-cpi-jun-2026-over-3",
+          "top_market_title": "US CPI YoY (Jun 2026) above 3.0%",
+          "top_share_of_total_gap": 0.4165,
+          "top_to_second_ratio": 1.063,
+          "herfindahl_index": 0.3441
+        },
+        {
+          "snapshot_id": "2026-03-22-close",
+          "label": "2026-03-22 close",
+          "as_of": "2026-03-22T23:55:00Z",
+          "feature_snapshot_hash": "23fac3ada617edbfe41a0c65c19f086d4e1fa1ed84280235a23b5fdbe48dcf5a",
+          "top_market_id": "poly-cpi-jun-2026-over-3",
+          "top_market_title": "US CPI YoY (Jun 2026) above 3.0%",
+          "top_share_of_total_gap": 0.4468,
+          "top_to_second_ratio": 1.206,
+          "herfindahl_index": 0.3532
+        },
+        {
+          "snapshot_id": "2026-03-23-close",
+          "label": "2026-03-23 close",
+          "as_of": "2026-03-23T23:55:00Z",
+          "feature_snapshot_hash": "90bc0bb8a8ffd8f2dfd609a3ae156fcc2170ba3ecfdf33a38d78c915f330c415",
+          "top_market_id": "poly-cpi-jun-2026-over-3",
+          "top_market_title": "US CPI YoY (Jun 2026) above 3.0%",
+          "top_share_of_total_gap": 0.4731,
+          "top_to_second_ratio": 1.336,
+          "herfindahl_index": 0.3629
+        },
+        {
+          "snapshot_id": "2026-03-24-close",
+          "label": "2026-03-24 close",
+          "as_of": "2026-03-24T23:55:00Z",
+          "feature_snapshot_hash": "2915421057bf1b61d3b4a29900f50c4fa1c19faa92f27554df873e1c31de3762",
+          "top_market_id": "poly-cpi-jun-2026-over-3",
+          "top_market_title": "US CPI YoY (Jun 2026) above 3.0%",
+          "top_share_of_total_gap": 0.5051,
+          "top_to_second_ratio": 1.469,
+          "herfindahl_index": 0.3843
+        },
+        {
+          "snapshot_id": "2026-03-25-close",
+          "label": "2026-03-25 close",
+          "as_of": "2026-03-25T23:55:00Z",
+          "feature_snapshot_hash": "eb23bd4be1a380556e36425c1ca2e0fbaca584301fb5d6ed25c95d268b91a68e",
+          "top_market_id": "poly-cpi-jun-2026-over-3",
+          "top_market_title": "US CPI YoY (Jun 2026) above 3.0%",
+          "top_share_of_total_gap": 0.5227,
+          "top_to_second_ratio": 1.61,
+          "herfindahl_index": 0.3893
+        },
+        {
+          "snapshot_id": "2026-03-26-close",
+          "label": "2026-03-26 close",
+          "as_of": "2026-03-26T23:55:00Z",
+          "feature_snapshot_hash": "5d912a3ddd101e0c9638288c13f90a1f4c55db37329bd0e81ed00857215b3ab6",
+          "top_market_id": "poly-cpi-jun-2026-over-3",
+          "top_market_title": "US CPI YoY (Jun 2026) above 3.0%",
+          "top_share_of_total_gap": 0.5649,
+          "top_to_second_ratio": 1.851,
+          "herfindahl_index": 0.4207
+        },
+        {
+          "snapshot_id": "2026-03-27-close",
+          "label": "2026-03-27 close",
+          "as_of": "2026-03-27T23:55:00Z",
+          "feature_snapshot_hash": "b3c4709686b93eaf4fffcecf209710b9251c383ad3edeea93b7495bf4912fd6c",
+          "top_market_id": "poly-cpi-jun-2026-over-3",
+          "top_market_title": "US CPI YoY (Jun 2026) above 3.0%",
+          "top_share_of_total_gap": 0.5819,
+          "top_to_second_ratio": 2.032,
+          "herfindahl_index": 0.4287
+        },
+        {
+          "snapshot_id": "2026-03-28-close",
+          "label": "2026-03-28 close",
+          "as_of": "2026-03-28T23:55:00Z",
+          "feature_snapshot_hash": "e7de3a6b9ed24bd83df21066d13258ed4ec38e22b6576f274524a0f10ffe1087",
+          "top_market_id": "poly-cpi-jun-2026-over-3",
+          "top_market_title": "US CPI YoY (Jun 2026) above 3.0%",
+          "top_share_of_total_gap": 0.6166,
+          "top_to_second_ratio": 2.244,
+          "herfindahl_index": 0.4616
+        },
+        {
+          "snapshot_id": "2026-03-29-close",
+          "label": "2026-03-29 close",
+          "as_of": "2026-03-29T23:55:00Z",
+          "feature_snapshot_hash": "c0395554b46544b8655152e6c659af7fcd08fad5267f6fa3d7ac022f7d063045",
+          "top_market_id": "poly-cpi-jun-2026-over-3",
+          "top_market_title": "US CPI YoY (Jun 2026) above 3.0%",
+          "top_share_of_total_gap": 0.6394,
+          "top_to_second_ratio": 2.452,
+          "herfindahl_index": 0.4815
+        },
+        {
+          "snapshot_id": "2026-03-30-close",
+          "label": "2026-03-30 close",
+          "as_of": "2026-03-30T23:55:00Z",
+          "feature_snapshot_hash": "dcdb62570301e6a7320b49fe0f140a4ee09e053367c8237f30581c4dfd0c3162",
+          "top_market_id": "poly-cpi-jun-2026-over-3",
+          "top_market_title": "US CPI YoY (Jun 2026) above 3.0%",
+          "top_share_of_total_gap": 0.6727,
+          "top_to_second_ratio": 2.835,
+          "herfindahl_index": 0.513
+        },
+        {
+          "snapshot_id": "2026-03-31-close",
+          "label": "2026-03-31 close",
+          "as_of": "2026-03-31T23:55:00Z",
+          "feature_snapshot_hash": "7b2967e7439431e80c6b00664d341310ffe52568d385c9b505f1bc4c0f212854",
+          "top_market_id": "poly-cpi-jun-2026-over-3",
+          "top_market_title": "US CPI YoY (Jun 2026) above 3.0%",
+          "top_share_of_total_gap": 0.6982,
+          "top_to_second_ratio": 3.146,
+          "herfindahl_index": 0.5398
+        }
+      ]
+    },
+    "secondary": {
+      "headline_finding": "Platform gap asymmetry is positive in 12/12 snapshots: Polymarket mean gaps stay above Kalshi.",
+      "question": "Do platforms exhibit asymmetric signed mispricing across the deterministic snapshot window?",
+      "method": "For each snapshot, compute mean signed gap by platform and measure asymmetry as Polymarket mean gap minus Kalshi mean gap.",
+      "result": "Average asymmetry (Polymarket mean gap - Kalshi mean gap): 7.67 pts | Positive-window share: 100.0%",
+      "interpretation": "A consistently positive asymmetry indicates directional pricing differences across platforms, which complements concentration analysis with a cross-platform structural lens.",
+      "one_sentence": "Across the deterministic window, Polymarket contracts are consistently priced further above fair value than Kalshi contracts on average.",
+      "limitations": [
+        "Only two platforms are represented in the demo fixture universe.",
+        "Mean signed gap can hide within-platform category dispersion.",
+        "Asymmetry is descriptive evidence, not a causal claim."
+      ],
+      "window_name": "flagship-persistence-window-v2",
+      "window_size": 12,
+      "average_asymmetry_gap": 0.0767,
+      "positive_window_share": 1.0,
+      "snapshots": [
+        {
+          "snapshot_id": "2026-03-20-close",
+          "label": "2026-03-20 close",
+          "as_of": "2026-03-20T23:55:00Z",
+          "feature_snapshot_hash": "9b0fdbcef32e39096c7cdbd73117eb8e120ee980c415892fc29d2ca557c6984f",
+          "polymarket_mean_gap": 0.0594,
+          "kalshi_mean_gap": -0.0221,
+          "asymmetry_gap": 0.0814
+        },
+        {
+          "snapshot_id": "2026-03-21-close",
+          "label": "2026-03-21 close",
+          "as_of": "2026-03-21T23:55:00Z",
+          "feature_snapshot_hash": "da559f0a32653286ed89c3f96e66e7e523fd417ae7105523ea9510c6830a534e",
+          "polymarket_mean_gap": 0.0596,
+          "kalshi_mean_gap": -0.0206,
+          "asymmetry_gap": 0.0802
+        },
+        {
+          "snapshot_id": "2026-03-22-close",
+          "label": "2026-03-22 close",
+          "as_of": "2026-03-22T23:55:00Z",
+          "feature_snapshot_hash": "23fac3ada617edbfe41a0c65c19f086d4e1fa1ed84280235a23b5fdbe48dcf5a",
+          "polymarket_mean_gap": 0.0602,
+          "kalshi_mean_gap": -0.0199,
+          "asymmetry_gap": 0.0801
+        },
+        {
+          "snapshot_id": "2026-03-23-close",
+          "label": "2026-03-23 close",
+          "as_of": "2026-03-23T23:55:00Z",
+          "feature_snapshot_hash": "90bc0bb8a8ffd8f2dfd609a3ae156fcc2170ba3ecfdf33a38d78c915f330c415",
+          "polymarket_mean_gap": 0.0604,
+          "kalshi_mean_gap": -0.0183,
+          "asymmetry_gap": 0.0787
+        },
+        {
+          "snapshot_id": "2026-03-24-close",
+          "label": "2026-03-24 close",
+          "as_of": "2026-03-24T23:55:00Z",
+          "feature_snapshot_hash": "2915421057bf1b61d3b4a29900f50c4fa1c19faa92f27554df873e1c31de3762",
+          "polymarket_mean_gap": 0.0614,
+          "kalshi_mean_gap": -0.0161,
+          "asymmetry_gap": 0.0775
+        },
+        {
+          "snapshot_id": "2026-03-25-close",
+          "label": "2026-03-25 close",
+          "as_of": "2026-03-25T23:55:00Z",
+          "feature_snapshot_hash": "eb23bd4be1a380556e36425c1ca2e0fbaca584301fb5d6ed25c95d268b91a68e",
+          "polymarket_mean_gap": 0.0618,
+          "kalshi_mean_gap": -0.0161,
+          "asymmetry_gap": 0.0779
+        },
+        {
+          "snapshot_id": "2026-03-26-close",
+          "label": "2026-03-26 close",
+          "as_of": "2026-03-26T23:55:00Z",
+          "feature_snapshot_hash": "5d912a3ddd101e0c9638288c13f90a1f4c55db37329bd0e81ed00857215b3ab6",
+          "polymarket_mean_gap": 0.0623,
+          "kalshi_mean_gap": -0.0139,
+          "asymmetry_gap": 0.0762
+        },
+        {
+          "snapshot_id": "2026-03-27-close",
+          "label": "2026-03-27 close",
+          "as_of": "2026-03-27T23:55:00Z",
+          "feature_snapshot_hash": "b3c4709686b93eaf4fffcecf209710b9251c383ad3edeea93b7495bf4912fd6c",
+          "polymarket_mean_gap": 0.0627,
+          "kalshi_mean_gap": -0.0138,
+          "asymmetry_gap": 0.0766
+        },
+        {
+          "snapshot_id": "2026-03-28-close",
+          "label": "2026-03-28 close",
+          "as_of": "2026-03-28T23:55:00Z",
+          "feature_snapshot_hash": "e7de3a6b9ed24bd83df21066d13258ed4ec38e22b6576f274524a0f10ffe1087",
+          "polymarket_mean_gap": 0.0637,
+          "kalshi_mean_gap": -0.0117,
+          "asymmetry_gap": 0.0754
+        },
+        {
+          "snapshot_id": "2026-03-29-close",
+          "label": "2026-03-29 close",
+          "as_of": "2026-03-29T23:55:00Z",
+          "feature_snapshot_hash": "c0395554b46544b8655152e6c659af7fcd08fad5267f6fa3d7ac022f7d063045",
+          "polymarket_mean_gap": 0.0631,
+          "kalshi_mean_gap": -0.01,
+          "asymmetry_gap": 0.0731
+        },
+        {
+          "snapshot_id": "2026-03-30-close",
+          "label": "2026-03-30 close",
+          "as_of": "2026-03-30T23:55:00Z",
+          "feature_snapshot_hash": "dcdb62570301e6a7320b49fe0f140a4ee09e053367c8237f30581c4dfd0c3162",
+          "polymarket_mean_gap": 0.0637,
+          "kalshi_mean_gap": -0.0095,
+          "asymmetry_gap": 0.0731
+        },
+        {
+          "snapshot_id": "2026-03-31-close",
+          "label": "2026-03-31 close",
+          "as_of": "2026-03-31T23:55:00Z",
+          "feature_snapshot_hash": "7b2967e7439431e80c6b00664d341310ffe52568d385c9b505f1bc4c0f212854",
+          "polymarket_mean_gap": 0.063,
+          "kalshi_mean_gap": -0.0078,
+          "asymmetry_gap": 0.0708
+        }
+      ]
+    },
+    "third": {
+      "headline_finding": "Inflation dislocation share increased by 30.66 pts across the deterministic window.",
+      "question": "Which macro category shows the largest dislocation-share drift across deterministic snapshots?",
+      "method": "For each snapshot, compute category share of total absolute dislocation, then compare the first and last snapshot shares to measure drift by category.",
+      "result": "Largest category-share drift: inflation increased by 30.66 pts (first=39.16%, last=69.82%).",
+      "interpretation": "Category drift complements concentration and platform asymmetry by showing where dislocation mass is rotating in the fixture-backed macro universe over time.",
+      "one_sentence": "Inflation is the largest drifting category, increased by 30.66 pts from the first to last deterministic snapshot.",
+      "limitations": [
+        "Category drift is measured on a small deterministic fixture universe.",
+        "Drift compares first and last snapshots; intrawindow oscillations may still occur.",
+        "Category share drift is descriptive and not a causal forecast signal."
+      ],
+      "window_name": "flagship-persistence-window-v2",
+      "window_size": 12,
+      "dominant_drift_category": "inflation",
+      "dominant_drift_points": 0.3066,
+      "category_drift": [
+        {
+          "category": "inflation",
+          "first_share": 0.3916,
+          "last_share": 0.6982,
+          "drift": 0.3066
+        },
+        {
+          "category": "unemployment",
+          "first_share": 0.4081,
+          "last_share": 0.2219,
+          "drift": -0.1862
+        },
+        {
+          "category": "fed",
+          "first_share": 0.1073,
+          "last_share": 0.0271,
+          "drift": -0.0802
+        },
+        {
+          "category": "recession",
+          "first_share": 0.0899,
+          "last_share": 0.0484,
+          "drift": -0.0415
+        },
+        {
+          "category": "gdp",
+          "first_share": 0.0031,
+          "last_share": 0.0044,
+          "drift": 0.0013
+        }
+      ],
+      "snapshots": [
+        {
+          "snapshot_id": "2026-03-20-close",
+          "label": "2026-03-20 close",
+          "as_of": "2026-03-20T23:55:00Z",
+          "feature_snapshot_hash": "9b0fdbcef32e39096c7cdbd73117eb8e120ee980c415892fc29d2ca557c6984f",
+          "category_shares": [
+            {
+              "category": "unemployment",
+              "absolute_gap": 0.0913,
+              "share_of_total_gap": 0.4081
+            },
+            {
+              "category": "inflation",
+              "absolute_gap": 0.0876,
+              "share_of_total_gap": 0.3916
+            },
+            {
+              "category": "fed",
+              "absolute_gap": 0.024,
+              "share_of_total_gap": 0.1073
+            },
+            {
+              "category": "recession",
+              "absolute_gap": 0.0201,
+              "share_of_total_gap": 0.0899
+            },
+            {
+              "category": "gdp",
+              "absolute_gap": 0.0007,
+              "share_of_total_gap": 0.0031
+            }
+          ]
+        },
+        {
+          "snapshot_id": "2026-03-21-close",
+          "label": "2026-03-21 close",
+          "as_of": "2026-03-21T23:55:00Z",
+          "feature_snapshot_hash": "da559f0a32653286ed89c3f96e66e7e523fd417ae7105523ea9510c6830a534e",
+          "category_shares": [
+            {
+              "category": "inflation",
+              "absolute_gap": 0.093,
+              "share_of_total_gap": 0.4165
+            },
+            {
+              "category": "unemployment",
+              "absolute_gap": 0.0875,
+              "share_of_total_gap": 0.3918
+            },
+            {
+              "category": "fed",
+              "absolute_gap": 0.0219,
+              "share_of_total_gap": 0.0981
+            },
+            {
+              "category": "recession",
+              "absolute_gap": 0.0193,
+              "share_of_total_gap": 0.0864
+            },
+            {
+              "category": "gdp",
+              "absolute_gap": 0.0016,
+              "share_of_total_gap": 0.0072
+            }
+          ]
+        },
+        {
+          "snapshot_id": "2026-03-22-close",
+          "label": "2026-03-22 close",
+          "as_of": "2026-03-22T23:55:00Z",
+          "feature_snapshot_hash": "23fac3ada617edbfe41a0c65c19f086d4e1fa1ed84280235a23b5fdbe48dcf5a",
+          "category_shares": [
+            {
+              "category": "inflation",
+              "absolute_gap": 0.099,
+              "share_of_total_gap": 0.4468
+            },
+            {
+              "category": "unemployment",
+              "absolute_gap": 0.0821,
+              "share_of_total_gap": 0.3705
+            },
+            {
+              "category": "fed",
+              "absolute_gap": 0.0214,
+              "share_of_total_gap": 0.0966
+            },
+            {
+              "category": "recession",
+              "absolute_gap": 0.0185,
+              "share_of_total_gap": 0.0835
+            },
+            {
+              "category": "gdp",
+              "absolute_gap": 0.0006,
+              "share_of_total_gap": 0.0027
+            }
+          ]
+        },
+        {
+          "snapshot_id": "2026-03-23-close",
+          "label": "2026-03-23 close",
+          "as_of": "2026-03-23T23:55:00Z",
+          "feature_snapshot_hash": "90bc0bb8a8ffd8f2dfd609a3ae156fcc2170ba3ecfdf33a38d78c915f330c415",
+          "category_shares": [
+            {
+              "category": "inflation",
+              "absolute_gap": 0.1045,
+              "share_of_total_gap": 0.4731
+            },
+            {
+              "category": "unemployment",
+              "absolute_gap": 0.0782,
+              "share_of_total_gap": 0.354
+            },
+            {
+              "category": "fed",
+              "absolute_gap": 0.0191,
+              "share_of_total_gap": 0.0865
+            },
+            {
+              "category": "recession",
+              "absolute_gap": 0.0175,
+              "share_of_total_gap": 0.0792
+            },
+            {
+              "category": "gdp",
+              "absolute_gap": 0.0016,
+              "share_of_total_gap": 0.0072
+            }
+          ]
+        },
+        {
+          "snapshot_id": "2026-03-24-close",
+          "label": "2026-03-24 close",
+          "as_of": "2026-03-24T23:55:00Z",
+          "feature_snapshot_hash": "2915421057bf1b61d3b4a29900f50c4fa1c19faa92f27554df873e1c31de3762",
+          "category_shares": [
+            {
+              "category": "inflation",
+              "absolute_gap": 0.1099,
+              "share_of_total_gap": 0.5051
+            },
+            {
+              "category": "unemployment",
+              "absolute_gap": 0.0748,
+              "share_of_total_gap": 0.3438
+            },
+            {
+              "category": "fed",
+              "absolute_gap": 0.0162,
+              "share_of_total_gap": 0.0744
+            },
+            {
+              "category": "recession",
+              "absolute_gap": 0.0161,
+              "share_of_total_gap": 0.074
+            },
+            {
+              "category": "gdp",
+              "absolute_gap": 0.0006,
+              "share_of_total_gap": 0.0028
+            }
+          ]
+        },
+        {
+          "snapshot_id": "2026-03-25-close",
+          "label": "2026-03-25 close",
+          "as_of": "2026-03-25T23:55:00Z",
+          "feature_snapshot_hash": "eb23bd4be1a380556e36425c1ca2e0fbaca584301fb5d6ed25c95d268b91a68e",
+          "category_shares": [
+            {
+              "category": "inflation",
+              "absolute_gap": 0.1153,
+              "share_of_total_gap": 0.5227
+            },
+            {
+              "category": "unemployment",
+              "absolute_gap": 0.0716,
+              "share_of_total_gap": 0.3246
+            },
+            {
+              "category": "fed",
+              "absolute_gap": 0.0164,
+              "share_of_total_gap": 0.0743
+            },
+            {
+              "category": "recession",
+              "absolute_gap": 0.0158,
+              "share_of_total_gap": 0.0716
+            },
+            {
+              "category": "gdp",
+              "absolute_gap": 0.0015,
+              "share_of_total_gap": 0.0068
+            }
+          ]
+        },
+        {
+          "snapshot_id": "2026-03-26-close",
+          "label": "2026-03-26 close",
+          "as_of": "2026-03-26T23:55:00Z",
+          "feature_snapshot_hash": "5d912a3ddd101e0c9638288c13f90a1f4c55db37329bd0e81ed00857215b3ab6",
+          "category_shares": [
+            {
+              "category": "inflation",
+              "absolute_gap": 0.1214,
+              "share_of_total_gap": 0.5649
+            },
+            {
+              "category": "unemployment",
+              "absolute_gap": 0.0656,
+              "share_of_total_gap": 0.3053
+            },
+            {
+              "category": "recession",
+              "absolute_gap": 0.0144,
+              "share_of_total_gap": 0.067
+            },
+            {
+              "category": "fed",
+              "absolute_gap": 0.0134,
+              "share_of_total_gap": 0.0624
+            },
+            {
+              "category": "gdp",
+              "absolute_gap": 0.0001,
+              "share_of_total_gap": 0.0005
+            }
+          ]
+        },
+        {
+          "snapshot_id": "2026-03-27-close",
+          "label": "2026-03-27 close",
+          "as_of": "2026-03-27T23:55:00Z",
+          "feature_snapshot_hash": "b3c4709686b93eaf4fffcecf209710b9251c383ad3edeea93b7495bf4912fd6c",
+          "category_shares": [
+            {
+              "category": "inflation",
+              "absolute_gap": 0.1268,
+              "share_of_total_gap": 0.5819
+            },
+            {
+              "category": "unemployment",
+              "absolute_gap": 0.0624,
+              "share_of_total_gap": 0.2864
+            },
+            {
+              "category": "recession",
+              "absolute_gap": 0.0141,
+              "share_of_total_gap": 0.0647
+            },
+            {
+              "category": "fed",
+              "absolute_gap": 0.0136,
+              "share_of_total_gap": 0.0624
+            },
+            {
+              "category": "gdp",
+              "absolute_gap": 0.001,
+              "share_of_total_gap": 0.0046
+            }
+          ]
+        },
+        {
+          "snapshot_id": "2026-03-28-close",
+          "label": "2026-03-28 close",
+          "as_of": "2026-03-28T23:55:00Z",
+          "feature_snapshot_hash": "e7de3a6b9ed24bd83df21066d13258ed4ec38e22b6576f274524a0f10ffe1087",
+          "category_shares": [
+            {
+              "category": "inflation",
+              "absolute_gap": 0.1322,
+              "share_of_total_gap": 0.6166
+            },
+            {
+              "category": "unemployment",
+              "absolute_gap": 0.0589,
+              "share_of_total_gap": 0.2747
+            },
+            {
+              "category": "recession",
+              "absolute_gap": 0.0127,
+              "share_of_total_gap": 0.0592
+            },
+            {
+              "category": "fed",
+              "absolute_gap": 0.0106,
+              "share_of_total_gap": 0.0494
+            },
+            {
+              "category": "gdp",
+              "absolute_gap": 0.0,
+              "share_of_total_gap": 0.0
+            }
+          ]
+        },
+        {
+          "snapshot_id": "2026-03-29-close",
+          "label": "2026-03-29 close",
+          "as_of": "2026-03-29T23:55:00Z",
+          "feature_snapshot_hash": "c0395554b46544b8655152e6c659af7fcd08fad5267f6fa3d7ac022f7d063045",
+          "category_shares": [
+            {
+              "category": "inflation",
+              "absolute_gap": 0.1351,
+              "share_of_total_gap": 0.6394
+            },
+            {
+              "category": "unemployment",
+              "absolute_gap": 0.0551,
+              "share_of_total_gap": 0.2608
+            },
+            {
+              "category": "recession",
+              "absolute_gap": 0.0117,
+              "share_of_total_gap": 0.0554
+            },
+            {
+              "category": "fed",
+              "absolute_gap": 0.0084,
+              "share_of_total_gap": 0.0398
+            },
+            {
+              "category": "gdp",
+              "absolute_gap": 0.001,
+              "share_of_total_gap": 0.0047
+            }
+          ]
+        },
+        {
+          "snapshot_id": "2026-03-30-close",
+          "label": "2026-03-30 close",
+          "as_of": "2026-03-30T23:55:00Z",
+          "feature_snapshot_hash": "dcdb62570301e6a7320b49fe0f140a4ee09e053367c8237f30581c4dfd0c3162",
+          "category_shares": [
+            {
+              "category": "inflation",
+              "absolute_gap": 0.1412,
+              "share_of_total_gap": 0.6727
+            },
+            {
+              "category": "unemployment",
+              "absolute_gap": 0.0498,
+              "share_of_total_gap": 0.2373
+            },
+            {
+              "category": "recession",
+              "absolute_gap": 0.011,
+              "share_of_total_gap": 0.0524
+            },
+            {
+              "category": "fed",
+              "absolute_gap": 0.0079,
+              "share_of_total_gap": 0.0376
+            },
+            {
+              "category": "gdp",
+              "absolute_gap": 0.0,
+              "share_of_total_gap": 0.0
+            }
+          ]
+        },
+        {
+          "snapshot_id": "2026-03-31-close",
+          "label": "2026-03-31 close",
+          "as_of": "2026-03-31T23:55:00Z",
+          "feature_snapshot_hash": "7b2967e7439431e80c6b00664d341310ffe52568d385c9b505f1bc4c0f212854",
+          "category_shares": [
+            {
+              "category": "inflation",
+              "absolute_gap": 0.1441,
+              "share_of_total_gap": 0.6982
+            },
+            {
+              "category": "unemployment",
+              "absolute_gap": 0.0458,
+              "share_of_total_gap": 0.2219
+            },
+            {
+              "category": "recession",
+              "absolute_gap": 0.01,
+              "share_of_total_gap": 0.0484
+            },
+            {
+              "category": "fed",
+              "absolute_gap": 0.0056,
+              "share_of_total_gap": 0.0271
+            },
+            {
+              "category": "gdp",
+              "absolute_gap": 0.0009,
+              "share_of_total_gap": 0.0044
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "ranked_snapshot_summary": {
+    "count": 5,
+    "markets": [
+      {
+        "rank": 1,
+        "market_id": "poly-cpi-jun-2026-over-3",
+        "title": "US CPI YoY (Jun 2026) above 3.0%",
+        "platform": "Polymarket",
+        "category": "inflation",
+        "market_probability": 0.64,
+        "fair_probability": 0.4959,
+        "gap": 0.1441,
+        "confidence": 0.8357
+      },
+      {
+        "rank": 2,
+        "market_id": "poly-unemp-dec-2026-over-4_5",
+        "title": "US unemployment above 4.5% by Dec 2026",
+        "platform": "Polymarket",
+        "category": "unemployment",
+        "market_probability": 0.42,
+        "fair_probability": 0.3742,
+        "gap": 0.0458,
+        "confidence": 0.8283
+      },
+      {
+        "rank": 3,
+        "market_id": "kalshi-recession-q4-2026",
+        "title": "US recession declared by Q4 2026",
+        "platform": "Kalshi",
+        "category": "recession",
+        "market_probability": 0.31,
+        "fair_probability": 0.32,
+        "gap": -0.01,
+        "confidence": 0.798
+      },
+      {
+        "rank": 4,
+        "market_id": "kalshi-fed-sep-2026-cut",
+        "title": "Fed cuts target rate by Sep 2026",
+        "platform": "Kalshi",
+        "category": "fed",
+        "market_probability": 0.49,
+        "fair_probability": 0.4956,
+        "gap": -0.0056,
+        "confidence": 0.8828
+      },
+      {
+        "rank": 5,
+        "market_id": "poly-gdp-q3-2026-below-1_5",
+        "title": "US real GDP growth (Q3 2026) below 1.5%",
+        "platform": "Polymarket",
+        "category": "gdp",
+        "market_probability": 0.46,
+        "fair_probability": 0.4609,
+        "gap": -0.0009,
+        "confidence": 0.8433
+      }
+    ]
+  },
+  "payload_hash": "347e26d31254f9ced05227cf16e618b1f7795a72b4f406315e8067f77702ac94"
+}

@@ -5,9 +5,17 @@
 <polyline fill="none" stroke="#6f8aa0" stroke-dasharray="4 3" stroke-width="1.5" points="70.0,310.0 830.0,310.0"/>
 <text x="70" y="24" fill="#eef6fb" font-size="17">Secondary Finding: Platform Gap Asymmetry</text>
 <text x="70" y="42" fill="#b6c9d7" font-size="12">Asymmetry = Polymarket mean gap - Kalshi mean gap</text>
-<polyline fill="none" stroke="#f4a259" stroke-width="3" points="70.0,44.0 323.3,44.3 576.7,54.0 830.0,73.7"/>
-<text x="70.0" y="334" text-anchor="middle" fill="#b6c9d7" font-size="11">2026-03-28 close</text>
-<text x="323.3" y="334" text-anchor="middle" fill="#b6c9d7" font-size="11">2026-03-29 close</text>
-<text x="576.7" y="334" text-anchor="middle" fill="#b6c9d7" font-size="11">2026-03-30 close</text>
+<polyline fill="none" stroke="#f4a259" stroke-width="3" points="70.0,44.0 139.1,47.9 208.2,48.2 277.3,52.8 346.4,56.7 415.5,55.4 484.5,61.0 553.6,59.7 622.7,63.6 691.8,71.1 760.9,71.1 830.0,78.6"/>
+<text x="70.0" y="334" text-anchor="middle" fill="#b6c9d7" font-size="11">2026-03-20 close</text>
+<text x="139.1" y="334" text-anchor="middle" fill="#b6c9d7" font-size="11">2026-03-21 close</text>
+<text x="208.2" y="334" text-anchor="middle" fill="#b6c9d7" font-size="11">2026-03-22 close</text>
+<text x="277.3" y="334" text-anchor="middle" fill="#b6c9d7" font-size="11">2026-03-23 close</text>
+<text x="346.4" y="334" text-anchor="middle" fill="#b6c9d7" font-size="11">2026-03-24 close</text>
+<text x="415.5" y="334" text-anchor="middle" fill="#b6c9d7" font-size="11">2026-03-25 close</text>
+<text x="484.5" y="334" text-anchor="middle" fill="#b6c9d7" font-size="11">2026-03-26 close</text>
+<text x="553.6" y="334" text-anchor="middle" fill="#b6c9d7" font-size="11">2026-03-27 close</text>
+<text x="622.7" y="334" text-anchor="middle" fill="#b6c9d7" font-size="11">2026-03-28 close</text>
+<text x="691.8" y="334" text-anchor="middle" fill="#b6c9d7" font-size="11">2026-03-29 close</text>
+<text x="760.9" y="334" text-anchor="middle" fill="#b6c9d7" font-size="11">2026-03-30 close</text>
 <text x="830.0" y="334" text-anchor="middle" fill="#b6c9d7" font-size="11">2026-03-31 close</text>
 </svg>

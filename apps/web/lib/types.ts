@@ -84,3 +84,10 @@ export interface SecondaryFindingSnapshot {
   kalshi_mean_gap: number;
   asymmetry_gap: number;
 }
+
+export interface ThirdFindingCategoryDrift {
+  category: Category;
+  first_share: number;
+  last_share: number;
+  drift: number;
+}

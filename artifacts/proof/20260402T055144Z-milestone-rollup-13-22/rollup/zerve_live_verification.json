@@ -1,0 +1,30 @@
+{
+  "checked_at": "2026-04-02T05:51:34Z",
+  "base_url": "https://api.zerve.cloud",
+  "project_id_present": false,
+  "api_key_present": true,
+  "probes": {
+    "base_root": {
+      "ok": false,
+      "status_code": 403,
+      "error": "http_403",
+      "response_body_logged": false
+    },
+    "projects_list": {
+      "ok": false,
+      "status_code": 404,
+      "error": "http_404",
+      "response_body_logged": false
+    }
+  },
+  "service_verify_remote": {
+    "integration": "zerve",
+    "enabled": false,
+    "configured": false,
+    "note": "Skipped verify_remote because ZERVE_PROJECT_ID is not set in environment."
+  },
+  "security": {
+    "api_key_logged": false,
+    "raw_api_key_in_payload": false
+  }
+}
